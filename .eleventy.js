@@ -25,7 +25,6 @@ module.exports = function(eleventyConfig) {
                 .use(postcssImport())
                 .use(postcssPresetEnv())
                 .process(content, { from: inputPath })
-                
                 return output.css
             }
         }
@@ -33,6 +32,11 @@ module.exports = function(eleventyConfig) {
 
     // eleventyConfig.addPassthroughCopy('src/styles/style.css');
     eleventyConfig.addPassthroughCopy('assets');
+
+    // md data import
+    eleventyConfig.addCollection("posts", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("_posts/*.md");
+    });
 
     return {
         dir: {

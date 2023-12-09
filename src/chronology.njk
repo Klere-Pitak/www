@@ -3,35 +3,37 @@ layout: base.njk
 title: Découvrir l'Histoire de la Martinique
 ---
 
-<div class="container">
+<main>
+    <script>
+        function handleClick(title, period, titlePicture) {
+            document.querySelector('.period h1').textContent = period;
+            document.querySelector('.period h2').textContent = title;
+            document.querySelector('.period img').src = titlePicture;
+        }
+    </script>
+    {%- set firstPost = collections.post[0] -%}
+    <div class="container">
 
-    <div class="timeline">
-        <ol role="list">
-            <li><a href="#"><span>-24 Ma</span></a></li>
-            <li class="current"><a href="#"><span>~ -19/18 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-            <li><a href="#"><span>-17/10 Ma</span></a></li>
-        </ol>
-    </div>
-
-    <article class="period">
-        <h1>Environ -19/18 millions d'années</h1>
-        <div class="period__content">
-            <h2>La presqu'île de Sainte-Anne</h2>
-            <figure>
-                <img src="https://picsum.photos/id/973/500/280" alt="" />
-            </figure>
+        <div class="timeline">
+            <ol role="list">
+            {%- for post in collections.post -%}
+              <li onclick="handleClick('{{ post.data.title | escape}}', '{{ post.data.period | escape}}', '{{ post.data.titlePicture | escape}}')"><span>{{ post.data.shrunkPeriod }}</span></li>
+            {%- endfor -%}
+            </ol>
         </div>
-        <a class="see_more" href="#">Plus de détails</a>
-    </article>
 
-</div>
+        <article class="period">
+            <h1>{{ firstPost.data.period }}</h1>
+            <div class="period__content">
+                <h2>{{ firstPost.data.title }}</h2>
+                <figure>
+                    <img src={{ firstPost.data.titlePicture }} alt="" />
+                </figure>
+            </div>
+            <a class="see_more" href="#">Plus de détails</a>
+        </article>
+
+    </div>
 
 <aside class="periods">
     <ul role="list">
