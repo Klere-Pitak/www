@@ -1,0 +1,79 @@
+.period {
+    padding-block: 2rem;
+    padding-inline: 4rem;
+
+    h1 {
+        display: inline-block;
+        background-color: var(--color-blue);
+        color: white;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        float: right;
+    }
+
+    .period__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 4rem;
+        clear: both;
+    }
+
+    h2 {
+        font-size: 5rem;
+        line-height: 1.2;
+        font-weight: bold;
+        width: 50%;
+    }
+
+    figure {
+        margin-inline: auto;
+        transform: rotate(-3deg);
+    }
+
+    .see_more {
+        color: black;
+        font-size: 1.5rem;
+        text-decoration: none;
+
+        &:hover, &:focus {
+            text-decoration: underline;
+        }
+    }
+}
+
+.periods {
+    margin-bottom: 4rem;
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1px;
+        background-color: white;
+
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        li {
+            a {
+                display: block;
+                text-decoration: none;
+                text-align: center;
+                font-size: 1.5rem;
+                background-color: black;
+                color: white;
+                padding: .5rem 1rem;
+                transition: color .2s ease, background-color .2s ease;
+
+                &.active, &:hover, &:focus {
+                    background-color: var(--color-yellow);
+                    color: black;
+                }
+            }
+        }
+    }
+}

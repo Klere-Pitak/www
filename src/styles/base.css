@@ -1,0 +1,38 @@
+body {
+    font-family: Arial;
+}
+
+.container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+}
+
+.tag {
+    display: inline-block;
+    border-radius: 9999px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    padding-block: .2rem;
+    padding-inline: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 9999px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-block: .5rem;
+    padding-inline: 1rem;
+
+    &.btn-primary {
+        background-color: var(--color-blue);
+        color: white;
+    }
+
+    &.btn-icon {
+        line-height: 1;
+    }
+}
