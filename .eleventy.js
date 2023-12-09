@@ -1,6 +1,5 @@
 const autoprefixer = require('autoprefixer')
 const postcss = require('postcss')
-const csso = require('postcss-csso')
 const postcssImport = require('postcss-import');
 const postcssNested = require('postcss-nested')
 const postcssPresetEnv = require('postcss-preset-env');
