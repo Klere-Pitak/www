@@ -1,4 +1,4 @@
-![Capture du site Internet de Kléré.](klere.png)
+![Capture du site Internet de Kléré.](klere-vignette.png)
 
 # Kléré
 
