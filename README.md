@@ -13,3 +13,10 @@ Chercheuse en histoire indépendante. Je travaille notamment sur la politique mu
 
 **Nora DOMI**
 Chargée de mission de médiation culturelle
+
+Si vous avez des questions ou des améliorations possibles, nous serions ravis de les intégrer et de vous accueillir en tant que contributeur.
+
+Visiter le site de [Webmonster](https://webmonster.tech).
+
+# Remerciements
+Merci à : keet, moust, ronny, fanmkaribeyenn
