@@ -4,20 +4,13 @@ title: Découvrir l'Histoire de la Martinique
 ---
 
 <main>
-    <script>
-        function handleClick(title, period, titlePicture) {
-            document.querySelector('.period h1').textContent = period;
-            document.querySelector('.period h2').textContent = title;
-            document.querySelector('.period img').src = titlePicture;
-        }
-    </script>
     {%- set firstPost = collections.post[0] -%}
     <div class="container">
 
         <div class="timeline">
             <ol role="list">
             {%- for post in collections.post -%}
-              <li onclick="handleClick('{{ post.data.title | escape}}', '{{ post.data.period | escape}}', '{{ post.data.titlePicture | escape}}')"><span>{{ post.data.shrunkPeriod }}</span></li>
+              <li><a href={{ post.url }}><span>{{ post.data.shrunkPeriod }}</span><a></li>
             {%- endfor -%}
             </ol>
         </div>
