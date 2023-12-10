@@ -1,0 +1,46 @@
+---
+layout: base.njk
+title: Découvrir l'Histoire de la Martinique
+---
+
+<main>
+    {%- set firstPost = collections.post[0] -%}
+    <div class="container">
+
+        <div class="timeline">
+            <ol role="list">
+            {%- for post in collections.post -%}
+              <li><a href={{ post.url }}><span>{{ post.data.shrunkPeriod }}</span></a></li>
+            {%- endfor -%}
+            </ol>
+        </div>
+
+        <article class="period">
+            <h1>{{ period }}</h1>
+            <div class="period__content">
+                <h2>{{ title }}</h2>
+                <figure>
+                    <img src={{ titlePicture }} alt="" />
+                </figure>
+            </div>
+            <a class="see_more" href="#">Plus de détails</a>
+        </article>
+
+    </div>
+
+<aside class="periods">
+    <ul role="list">
+        <li>
+            <a href="#" class="active">Formation géologique</a>
+        </li>
+        <li>
+            <a href="#">Peuplement</a>
+        </li>
+        <li>
+            <a href="#">Colonisation</a>
+        </li>
+        <li>
+            <a href="#">Contemporain</a>
+        </li>
+    </ul>
+</aside>
