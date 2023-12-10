@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: chronology
 tags: post
 title: moust
 titlePicture: https://picsum.photos/id/973/500/280
