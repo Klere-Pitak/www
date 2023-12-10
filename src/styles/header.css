@@ -10,7 +10,6 @@
 
     .site-name {
         font-size: 4rem;
-        font-weight: bold;
         position: relative;
         padding-inline: 1rem;
 
@@ -70,6 +69,7 @@
 
             a {
                 color: inherit;
+                font-size: .8rem;
                 text-decoration: none;
             }
         }

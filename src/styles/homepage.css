@@ -32,6 +32,7 @@
                 transform: rotate(-90deg);
                 display: inline-block;
                 font-size: 12rem;
+                font-weight: 500;
                 margin-left: 30%;
             }
         }
