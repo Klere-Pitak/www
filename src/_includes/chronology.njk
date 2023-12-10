@@ -3,30 +3,34 @@ layout: base.njk
 title: Découvrir l'Histoire de la Martinique
 ---
 
-<main>
-    {%- set firstPost = collections.post[0] -%}
-    <div class="container">
+{% import "macros/pagination.njk" as pagination with context %}
 
-        <div class="timeline">
-            <ol role="list">
-            {%- for post in collections.post -%}
-              <li><a href={{ post.url }}><span>{{ post.data.shrunkPeriod }}</span></a></li>
-            {%- endfor -%}
-            </ol>
-        </div>
+{%- set firstPost = collections.post[0] -%}
+<div class="container">
 
-        <article class="period">
-            <h1>{{ period }}</h1>
-            <div class="period__content">
-                <h2>{{ title }}</h2>
-                <figure>
-                    <img src={{ titlePicture }} alt="" />
-                </figure>
-            </div>
-            <a class="see_more" href="#">Plus de détails</a>
-        </article>
-
+    <div class="timeline">
+        <ol role="list">
+        {% for post in collections.post -%}
+            <li><a href={{ post.url }}><span>{{ post.data.shrunkPeriod }}</span></a></li>
+        {% endfor -%}
+        </ol>
     </div>
+
+    <article class="period">
+        <h1>{{ period }}</h1>
+        <div class="period__content">
+            <h2>{{ title }}</h2>
+            <figure>
+                <img src={{ titlePicture }} alt="" />
+            </figure>
+        </div>
+        <a class="see_more" href="#">Plus de détails</a>
+    </article>
+
+    {{ pagination.getPreviousItemInCollection('post', '←', 'previous-link') }}
+    {{ pagination.getNextItemInCollection('post', '→', 'next-link') }}
+
+</div>
 
 <aside class="periods">
     <ul role="list">
