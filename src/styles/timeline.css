@@ -4,7 +4,7 @@
     ol {
         list-style: none;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         flex-wrap: nowrap;
         padding-inline: 2rem;
 
