@@ -154,11 +154,11 @@
                 background-color: #fff;
                 color: #4285f4;
                 font-size: 2rem;
-                height: 4rem;
-                line-height: 4rem;
+                line-height: 5rem;
                 text-align: center;
-                width: 4rem;
-                padding: 2px 0 0 7px;
+                width: 5rem;
+                height: 5rem;
+                padding: 1rem;
             }
 
             .num {
