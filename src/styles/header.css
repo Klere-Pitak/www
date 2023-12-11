@@ -1,5 +1,34 @@
 .page-header {
-    padding-top: 2rem;
+    background-color: white;
+    margin-top: 2rem;
+    position: sticky;
+    top: -1px;
+
+    &.is-pinned {
+        z-index: 10;
+        .site-name {
+            transition: font-size 0.2s ease;
+            font-size: 2rem;
+        }
+        .nav-list {
+            li {
+                a {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: .5rem;
+                    transition: all 0.2s ease;
+                }
+                svg {
+                    transition: all 0.2s ease;
+                    height: 2rem;
+                    width: 2rem;
+                    border: 0 none;
+                    padding: 0;
+                }
+            }
+        }
+    }
 
     .header__content {
         border-bottom: 1px solid black;
@@ -44,8 +73,11 @@
         li {
             display: flex;
             align-items: center;
+            justify-content: center;
+            flex-direction: column;
             padding-inline: 1rem;
             position: relative;
+            text-align: center;
 
             &:first-child::before {
                 content: "";
@@ -67,10 +99,29 @@
                 position: absolute;
             }
 
+            svg {
+                width: 4rem;
+                height: 4rem;
+                border: 1px solid black;
+                border-radius: 9999px;
+                padding: .5rem;
+
+                path {
+                    stroke-width: 1px;
+                }
+            }
+
             a {
                 color: inherit;
                 font-size: .8rem;
                 text-decoration: none;
+
+                &:is(:hover,:focus) {
+                    color: var(--color-blue);
+                    svg {
+                        border-color: var(--color-blue);
+                    }
+                }
             }
         }
     }

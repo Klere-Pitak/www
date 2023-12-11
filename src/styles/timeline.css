@@ -1,5 +1,8 @@
 .timeline {
     background-color: var(--color-yellow);
+    position: sticky;
+    top: 3rem;
+    z-index: 9;
 
     ol {
         list-style: none;
@@ -37,8 +40,8 @@
                 }
             }
 
-            &:hover, &:focus, &.current {
-                a {
+            a {
+                &:is(:hover, :focus, [aria-current="page"]) {
                     &::before {
                         width: 2rem;
                         height: 2rem;

@@ -6,45 +6,133 @@ title: Découvrir l'Histoire de la Martinique
 {% import "macros/pagination.njk" as pagination with context %}
 
 {%- set firstPost = collections.post[0] -%}
-<div class="container">
+<div class="container" data-barba="wrapper">
 
-    <div class="timeline">
-        <ol role="list">
+    <nav class="timeline">
+        <ol>
         {% for post in collections.post -%}
-            <li><a href={{ post.url }}><span>{{ post.data.shrunkPeriod }}</span></a></li>
+            <li><a href={{ post.url }}{% if post.url == page.url %} aria-current="page"{% endif %}><span>{{ post.data.shrunkPeriod }}</span></a></li>
         {% endfor -%}
         </ol>
+    </nav>
+
+    <div data-barba="container" data-barba-namespace="home">
+
+        <article class="period">
+            <h1>{{ period }}</h1>
+            <div class="period__content">
+                <h2>{{ title }}</h2>
+                <figure>
+                    <img src={{ titlePicture }} alt="" />
+                </figure>
+            </div>
+            <a class="see_more" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                <span>Plus de détails</span>
+            </a>
+        </article>
+
+        <nav role="navigation">
+            {% set arrowLeft = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>' %}
+            {% set arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>' %}
+            {{ pagination.getPreviousItemInCollection('post', arrowLeft, 'prev-link') }}
+            {{ pagination.getNextItemInCollection('post', arrowRight, 'next-link') }}
+        </nav>
+    
     </div>
 
-    <article class="period">
-        <h1>{{ period }}</h1>
-        <div class="period__content">
-            <h2>{{ title }}</h2>
-            <figure>
-                <img src={{ titlePicture }} alt="" />
-            </figure>
-        </div>
-        <a class="see_more" href="#">Plus de détails</a>
-    </article>
+    {% set categories = ['Formation géologique', 'Peuplement', 'Contemporain'] %}
 
-    {{ pagination.getPreviousItemInCollection('post', '←', 'previous-link') }}
-    {{ pagination.getNextItemInCollection('post', '→', 'next-link') }}
+    <nav class="periods">
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="#"{% if category in tags %} aria-current="page"{% endif %}>{{ category }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
 
 </div>
 
-<aside class="periods">
-    <ul role="list">
-        <li>
-            <a href="#" class="active">Formation géologique</a>
-        </li>
-        <li>
-            <a href="#">Peuplement</a>
-        </li>
-        <li>
-            <a href="#">Colonisation</a>
-        </li>
-        <li>
-            <a href="#">Contemporain</a>
-        </li>
-    </ul>
-</aside>
+<script src=" https://cdn.jsdelivr.net/npm/@barba/core@2.9/dist/barba.umd.min.js "></script>
+<script src=" https://cdn.jsdelivr.net/npm/animejs@3.2/lib/anime.min.js "></script>
+<script>
+    barba.hooks.before(function() {
+        barba.wrapper.classList.add('is-animating');
+    });
+    
+    barba.hooks.after(function() {
+        barba.wrapper.classList.remove('is-animating');
+    });
+
+    const { anime } = window;
+
+    function slide(targets, step, direction) {
+        const duration = 1000;
+        const from = step === 'leave' ? 0 : 100;  
+        const to = step === 'leave' ? 100 : 0;
+
+        targets.style.transform = direction === 'next'
+            ? `translateX(${from}%)`
+            : `translateX(-${from}%)`;
+
+        const translateX = direction === 'next' ? `-${to}%` : `${to}%`;
+        const opacity = step === 'leave' ? 0 : 1;
+        const staggerX = window.innerWidth * 0.1;
+        const anim = anime.timeline({
+            easing: 'easeInOutQuart',
+            duration,
+        });
+        
+        anim.add({
+            targets,
+            translateX,
+            opacity,
+        });
+
+        
+        if (step === 'enter') {
+            anim.add({
+            targets: targets.querySelectorAll('.period > *'),
+            translateX: direction === 'next' ? [staggerX, 0] : [-staggerX, 0],
+            duration: duration * 0.6,
+            easing: 'easeOutQuart',
+            delay: anime.stagger(100),
+            }, '-=500');
+        }
+        
+        return anim.finished;
+    }
+
+    const timeline = document.querySelector('.timeline')
+
+    function updateTimeline({ trigger }) {
+        const href = trigger.href.split(document.location.host)[1]
+        timeline.querySelectorAll('a').forEach(el => el.removeAttribute('aria-current'))
+        const target = timeline.querySelector(`a[href="${href}"]`)
+        if (target) {
+            target.setAttribute('aria-current', 'page')
+        }
+    }
+
+    barba.init({
+        debug: false,
+        transitions: [
+           {
+                sync: true,
+                custom: ({ trigger }) => trigger.dataset && trigger.dataset.direction === 'next',
+                leave: ({ current }) => slide(current.container, 'leave', 'next'),
+                enter: ({ next }) => slide(next.container, 'enter', 'next'),
+                beforeEnter: updateTimeline,
+            },
+            {
+                sync: true,
+                custom: ({ trigger }) => trigger.dataset && trigger.dataset.direction === 'prev',
+                leave: ({ current }) => slide(current.container, 'leave', 'prev'),
+                enter: ({ next }) => slide(next.container, 'enter', 'prev'),
+                beforeEnter: updateTimeline,
+            },
+        ]
+    })
+</script>

@@ -13,7 +13,7 @@
 {% set prevItem = collections[collection][prevItemIndex] %}
 
 {% if prevItem %}
-<a href="{{ prevItem.url | url }}" class="{{class}}" aria-label="{{ prevItem.data.title }}">{% if libelle %}{{ libelle }}{% else %}{{ prevItem.data.title }}{% endif %}</a>
+<a href="{{ prevItem.url | url }}" class="{{class}}" aria-label="Précédent" data-direction="prev">{% if libelle %}{{ libelle | safe }}{% else %}{{ prevItem.data.title }}{% endif %}</a>
 {% endif %}
 
 {% endmacro %}
@@ -34,7 +34,7 @@
 {% set nextItem = collections[collection][nextItemIndex] %}
 
 {% if nextItem %}
-<a href="{{ nextItem.url | url }}" class="{{class}}" aria-label="{{ nextItem.data.title }}">{% if libelle %}{{ libelle }}{% else %}{{ nextItem.data.title }}{% endif %}</a>
+<a href="{{ nextItem.url | url }}" class="{{class}}" aria-label="Suivant" data-direction="next">{% if libelle %}{{ libelle | safe }}{% else %}{{ nextItem.data.title }}{% endif %}</a>
 {% endif %}
 
 {% endmacro %}

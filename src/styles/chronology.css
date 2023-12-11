@@ -1,6 +1,5 @@
 .period {
     padding-block: 2rem;
-    padding-inline: 4rem;
 
     h1 {
         display: inline-block;
@@ -16,7 +15,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 2rem;
         padding-block: 4rem;
+        padding-inline: 4rem;
         clear: both;
     }
 
@@ -36,14 +37,58 @@
         color: black;
         font-size: 1.5rem;
         text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        transition: color .1s ease-in-out;
 
-        &:hover, &:focus {
-            text-decoration: underline;
+        svg {
+            background-color: black;
+            border-radius: 2rem;
+            color: #fff;
+            content: "";
+            display: inline-block;
+            width: 6rem;
+            height: 4rem;
+            stroke-width: 1px;
+            transition: background-color .1s ease-in-out;
+
+            path {
+                scale: .8;
+                transform-origin: center;
+            }
+        }
+          
+
+        &:where(:hover, :focus) {
+            color: var(--color-blue);
+            svg {
+                background-color: var(--color-blue);
+                path {
+                    animation-name: yahou;
+                    animation-duration: 800ms;
+                }
+            }
         }
     }
 }
 
-.previous-link, .next-link {
+@keyframes yahou {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(100%);
+    }
+    51% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.prev-link, .next-link {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
@@ -58,14 +103,20 @@
     line-height: 2rem;
     text-align: center;
     text-decoration: none;
+    transition: opacity .2s ease;
+
+    &:is(:hover, :focus) {
+        color: var(--color-blue);
+        border-color: var(--color-blue);
+    }
 }
 
-.previous-link {
-    left: 2rem;
+.prev-link {
+    left: -1rem;
 }
 
 .next-link {
-    right: 2rem;
+    right: -1rem;
 }
 
 .periods {
@@ -95,11 +146,30 @@
                 padding: .5rem 1rem;
                 transition: color .2s ease, background-color .2s ease;
 
-                &.active, &:hover, &:focus {
+                &:where(:hover, :focus, [aria-current="page"]) {
                     background-color: var(--color-yellow);
                     color: black;
                 }
             }
         }
+    }
+}
+
+[data-barba='wrapper'] {
+    position: relative;
+
+    &.is-animating {
+        .prev-link, .next-link {
+            opacity: 0;
+        }
+    }
+}
+  
+[data-barba='container'] {
+    will-change: transform;
+
+    .is-animating > & {
+        position: absolute;
+        width: calc(100% - 4rem);
     }
 }

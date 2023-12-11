@@ -1,6 +1,8 @@
 ---
 layout: chronology
-tags: post
+tags:
+  - post
+  - Contemporain
 title: moust
 titlePicture: https://picsum.photos/id/973/500/280
 shrunkPeriod:  -1/1 Ma
