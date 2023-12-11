@@ -107,8 +107,9 @@ title: Découvrir l'Histoire de la Martinique
 
     const timeline = document.querySelector('.timeline')
 
+    // callback function to update the timeline's position
     function updateTimeline({ trigger }) {
-        const href = trigger.href.split(document.location.host)[1]
+        const href = barba.url.parse(trigger.href).path
         timeline.querySelectorAll('a').forEach(el => el.removeAttribute('aria-current'))
         const target = timeline.querySelector(`a[href="${href}"]`)
         if (target) {
@@ -120,6 +121,7 @@ title: Découvrir l'Histoire de la Martinique
         debug: false,
         transitions: [
            {
+                name: 'next',
                 sync: true,
                 custom: ({ trigger }) => trigger.dataset && trigger.dataset.direction === 'next',
                 leave: ({ current }) => slide(current.container, 'leave', 'next'),
@@ -127,6 +129,7 @@ title: Découvrir l'Histoire de la Martinique
                 beforeEnter: updateTimeline,
             },
             {
+                name: 'previous',
                 sync: true,
                 custom: ({ trigger }) => trigger.dataset && trigger.dataset.direction === 'prev',
                 leave: ({ current }) => slide(current.container, 'leave', 'prev'),
@@ -135,4 +138,27 @@ title: Découvrir l'Histoire de la Martinique
             },
         ]
     })
+
+    // make timeline's link triggering navigation transition
+    timeline.querySelectorAll('a').forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault()
+            const currentHref = barba.url.parse(barba.history.current.url).path
+
+            // get target position compare to current and update target data attribute `direction` used by Barba transitions
+            const currentPosition = timeline.querySelector(`a[href="${currentHref}"]`)
+            if (currentPosition && currentPosition.compareDocumentPosition(e.target) & Node.DOCUMENT_POSITION_FOLLOWING) {
+                e.target.setAttribute('data-direction', 'next')
+            } else {
+                e.target.setAttribute('data-direction', 'prev')
+            }
+
+            // trigger navigation
+            // https://barba.js.org/docs/advanced/utils/
+            barba.go(e.target.href, e.target, e)
+
+            return false;
+        }, false)
+    })
+
 </script>
