@@ -143,19 +143,20 @@ title: Découvrir l'Histoire de la Martinique
     timeline.querySelectorAll('a').forEach(el => {
         el.addEventListener('click', (e) => {
             e.preventDefault()
+            const target = e.currentTarget
             const currentHref = barba.url.parse(barba.history.current.url).path
 
             // get target position compare to current and update target data attribute `direction` used by Barba transitions
             const currentPosition = timeline.querySelector(`a[href="${currentHref}"]`)
-            if (currentPosition && currentPosition.compareDocumentPosition(e.target) & Node.DOCUMENT_POSITION_FOLLOWING) {
-                e.target.setAttribute('data-direction', 'next')
+            if (currentPosition && currentPosition.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_FOLLOWING) {
+                target.setAttribute('data-direction', 'next')
             } else {
-                e.target.setAttribute('data-direction', 'prev')
+                target.setAttribute('data-direction', 'prev')
             }
 
             // trigger navigation
             // https://barba.js.org/docs/advanced/utils/
-            barba.go(e.target.href, e.target, e)
+            barba.go(target.href, target, e)
 
             return false;
         }, false)
