@@ -10,6 +10,7 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "dev": "npx @11ty/eleventy --serve",
+    "lint:a11y": "pa11y-ci -c .pa11yci.json './public/**/*.html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "@11ty/eleventy": "^2.0.1",
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
+    "pa11y-ci": "^3.1.0",
     "postcss": "^8.4.32",
     "postcss-import": "^15.1.0",
     "postcss-nested": "^6.0.1",
