@@ -1,0 +1,43 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.*ignore'
+      - '**.env*'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.*ignore'
+      - '**.env*'
+
+jobs:
+  integration:
+    name: Continuous integration checks
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+
+      - name: Format project
+        run: npm run format
+      
+      - name: Lint project
+        run: npm run lint

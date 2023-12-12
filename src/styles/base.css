@@ -8,7 +8,7 @@ body {
 }
 
 .site-name {
-    font-family: "CabinetGrotesk";
+    font-family: 'CabinetGrotesk';
     font-weight: 800;
 }
 
@@ -18,7 +18,7 @@ body {
     background-color: black;
     color: white;
     text-transform: uppercase;
-    padding-block: .2rem;
+    padding-block: 0.2rem;
     padding-inline: 1rem;
 }
 
@@ -29,7 +29,7 @@ body {
     color: white;
     text-transform: uppercase;
     text-decoration: none;
-    padding-block: .5rem;
+    padding-block: 0.5rem;
     padding-inline: 1rem;
 
     &.btn-primary {

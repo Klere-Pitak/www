@@ -10,6 +10,9 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "dev": "npx @11ty/eleventy --serve",
+    "format": "prettier --write -c src",
+    "lint": "npm run lint:js && npm run lint:a11y",
+    "lint:js": "eslint --ext .js ./src/scripts/",
     "lint:a11y": "pa11y-ci -c .pa11yci.json './public/**/*.html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,10 +23,15 @@
     "@11ty/eleventy": "^2.0.1",
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-compat": "^4.2.0",
     "pa11y-ci": "^3.1.0",
     "postcss": "^8.4.32",
     "postcss-import": "^15.1.0",
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.3.0"
+  },
+  "dependencies": {
+    "prettier": "^3.1.1"
   }
 }

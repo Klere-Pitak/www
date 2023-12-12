@@ -30,9 +30,8 @@ module.exports = function(eleventyConfig) {
         }
     })
 
-    // eleventyConfig.addPassthroughCopy('src/styles/style.css');
     eleventyConfig.addPassthroughCopy('assets');
-    
+    eleventyConfig.addPassthroughCopy('src/scripts');
 
     // md data import
     eleventyConfig.addCollection("posts", function(collectionApi) {

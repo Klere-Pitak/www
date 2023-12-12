@@ -40,14 +40,13 @@
 }
 
 .history {
-
     .history__content {
         border-top: 1px solid black;
         position: relative;
         padding-top: 3rem;
 
         &::before {
-            content: "";
+            content: '';
             height: 20px;
             border-left: 1px solid black;
             display: block;
@@ -55,9 +54,9 @@
             top: 0;
             position: absolute;
         }
-    
+
         &::after {
-            content: "";
+            content: '';
             height: 20px;
             border-left: 1px solid black;
             display: block;
@@ -95,7 +94,7 @@
             background-color: var(--color-blue);
             filter: brightness(90%);
             border-radius: 1rem;
-            content: "";
+            content: '';
             display: block;
             top: -40px;
             position: absolute;
@@ -109,7 +108,7 @@
             background-color: var(--color-blue);
             filter: brightness(80%);
             border-radius: 1rem;
-            content: "";
+            content: '';
             display: block;
             top: -80px;
             position: absolute;
@@ -135,7 +134,7 @@
                 width: 60%;
                 font-size: 3rem;
                 font-weight: normal;
-                text-shadow: 0 2px 4px rgba(0,0,0,.4)
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
             }
 
             p {
@@ -165,7 +164,7 @@
                 font-size: 3rem;
                 &::before {
                     background-color: #fff;
-                    content: "";
+                    content: '';
                     display: inline-block;
                     height: 3px;
                     width: 60px;
@@ -174,7 +173,6 @@
                 }
             }
         }
-
     }
 }
 
@@ -215,7 +213,7 @@
         font-size: 1.5rem;
         margin-bottom: 2rem;
     }
-    
+
     .author__description {
         font-size: 2rem;
     }
@@ -238,7 +236,7 @@
         position: relative;
 
         &::before {
-            content: "";
+            content: '';
             height: 20px;
             border-left: 1px solid black;
             display: block;
@@ -257,7 +255,7 @@
             }
 
             &::after {
-                content: "";
+                content: '';
                 height: 20px;
                 border-left: 1px solid black;
                 display: block;

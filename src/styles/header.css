@@ -16,7 +16,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: .5rem;
+                    gap: 0.5rem;
                     transition: all 0.2s ease;
                 }
                 svg {
@@ -48,7 +48,7 @@
         }
 
         &::before {
-            content: "";
+            content: '';
             height: 20px;
             border-left: 1px solid black;
             display: block;
@@ -80,7 +80,7 @@
             text-align: center;
 
             &:first-child::before {
-                content: "";
+                content: '';
                 height: 20px;
                 border-left: 1px solid black;
                 display: block;
@@ -90,7 +90,7 @@
             }
 
             &::after {
-                content: "";
+                content: '';
                 height: 20px;
                 border-left: 1px solid black;
                 display: block;
@@ -104,7 +104,7 @@
                 height: 4rem;
                 border: 1px solid black;
                 border-radius: 9999px;
-                padding: .5rem;
+                padding: 0.5rem;
 
                 path {
                     stroke-width: 1px;
@@ -113,10 +113,10 @@
 
             a {
                 color: inherit;
-                font-size: .8rem;
+                font-size: 0.8rem;
                 text-decoration: none;
 
-                &:is(:hover,:focus) {
+                &:is(:hover, :focus) {
                     color: var(--color-blue);
                     svg {
                         border-color: var(--color-blue);

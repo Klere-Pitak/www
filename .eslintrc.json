@@ -1,0 +1,15 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:compat/recommended"
+    ],
+    "plugins": ["compat"],
+    "root": true
+}

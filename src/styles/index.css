@@ -1,12 +1,12 @@
-@import "reset.css";
-@import "typography.css";
-@import "base.css";
-@import "animations.css";
-@import "header.css";
-@import "footer.css";
-@import "homepage.css";
-@import "timeline.css";
-@import "chronology.css";
+@import 'reset.css';
+@import 'typography.css';
+@import 'base.css';
+@import 'animations.css';
+@import 'header.css';
+@import 'footer.css';
+@import 'homepage.css';
+@import 'timeline.css';
+@import 'chronology.css';
 
 :root {
     --color-blue: #4285f4;

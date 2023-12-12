@@ -40,25 +40,24 @@
         display: inline-flex;
         align-items: center;
         gap: 1rem;
-        transition: color .1s ease-in-out;
+        transition: color 0.1s ease-in-out;
 
         svg {
             background-color: black;
             border-radius: 2rem;
             color: #fff;
-            content: "";
+            content: '';
             display: inline-block;
             width: 6rem;
             height: 4rem;
             stroke-width: 1px;
-            transition: background-color .1s ease-in-out;
+            transition: background-color 0.1s ease-in-out;
 
             path {
-                scale: .8;
+                scale: 0.8;
                 transform-origin: center;
             }
         }
-          
 
         &:where(:hover, :focus) {
             color: var(--color-blue);
@@ -73,7 +72,8 @@
     }
 }
 
-.prev-link, .next-link {
+.prev-link,
+.next-link {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
@@ -87,7 +87,7 @@
     line-height: 2rem;
     text-align: center;
     text-decoration: none;
-    transition: opacity .2s ease;
+    transition: opacity 0.2s ease;
 
     &:is(:hover, :focus) {
         color: var(--color-blue);
@@ -96,7 +96,7 @@
 
     svg {
         path {
-            scale: .5;
+            scale: 0.5;
             transform-origin: center;
         }
     }
@@ -128,7 +128,7 @@
 
 .periods {
     margin-bottom: 4rem;
-    
+
     ul {
         list-style: none;
         padding: 0;
@@ -150,10 +150,12 @@
                 font-size: 1.5rem;
                 background-color: black;
                 color: white;
-                padding: .5rem 1rem;
-                transition: color .2s ease, background-color .2s ease;
+                padding: 0.5rem 1rem;
+                transition:
+                    color 0.2s ease,
+                    background-color 0.2s ease;
 
-                &:where(:hover, :focus, [aria-current="page"]) {
+                &:where(:hover, :focus, [aria-current='page']) {
                     background-color: var(--color-yellow);
                     color: black;
                 }
@@ -166,12 +168,13 @@
     position: relative;
 
     &.is-animating {
-        .prev-link, .next-link {
+        .prev-link,
+        .next-link {
             opacity: 0;
         }
     }
 }
-  
+
 [data-barba='container'] {
     will-change: transform;
 
