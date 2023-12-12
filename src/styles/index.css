@@ -10,7 +10,12 @@
 @import 'chronology.css';
 
 :root {
+    --color-lightgray: #efefef;
+    --color-darkgray: #1e1e1e;
     --color-blue: #6191ff;
+    --color-green: #007d53;
+    --color-pink: #fbc2d3;
+    --color-red: #f25836;
     --color-yellow: #fcdb38;
 
     --base-font-size: 16px;
