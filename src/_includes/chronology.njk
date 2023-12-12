@@ -27,7 +27,7 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
                     <img src={{ titlePicture }} alt="" />
                 </figure>
             </div>
-            <a class="see_more" onClick="toggleDiv()">
+            <a class="see_more" id="toggle_details" aria-controls="details" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                 <span>Plus de détails</span>
             </a>
@@ -40,7 +40,7 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
             {{ pagination.getNextItemInCollection('post', arrowRight, 'next-link') }}
         </nav>
 
-    <div id="details">
+    <div id="details" role="region" tabindex="-1">
     {% set pos = 0 %}
     {% for detail in details %}
         {% if pos != details.length %}
@@ -59,23 +59,7 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
     {% set pos = pos + 1 %}
     {% endfor %}
     </div>
-
-    <script>
-    let expanded = false;
-
-    function toggleDiv() {
-        const div = document.getElementById('details');
-        if (expanded) {
-            div.style.display = 'block';
-            div.scrollIntoView({ behavior: 'smooth', block: "nearest" });
-        } else {
-            div.style.display = 'none';
-        }
-        expanded = !expanded;
-    }
-    </script>
-
-    </div>
+    </div> <!-- #details -->
 
     {% set categories = ['Formation géologique', 'Peuplement', 'Contemporain'] %}
 

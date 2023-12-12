@@ -105,3 +105,18 @@ timeline.querySelectorAll('a').forEach((el) => {
         false,
     );
 });
+
+// scroll to details when opening
+const details = document.getElementById('details');
+document.getElementById('toggle_details').addEventListener(
+    'click',
+    (e) => {
+        // add delay in the event stack to ensure composent is displayed before scrolling
+        setTimeout(() => {
+            if (e.currentTarget.classList.contains('open')) {
+                details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }, 10);
+    },
+    false,
+);

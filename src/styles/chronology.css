@@ -169,6 +169,13 @@
     }
 }
 
+#details {
+    display: none;
+    &.open {
+        display: block;
+    }
+}
+
 [data-barba='wrapper'] {
     position: relative;
 
