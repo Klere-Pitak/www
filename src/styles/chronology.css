@@ -1,5 +1,6 @@
 .period {
     padding-block: 2rem;
+    position: relative;
 
     h1 {
         display: inline-block;
@@ -72,14 +73,40 @@
                 }
             }
         }
+
+        &[aria-expanded="false"] {
+            .more {
+                display: block;
+            }
+            .less {
+                display: none;
+            }
+        }
+
+        &[aria-expanded="true"] {
+            .more {
+                display: none;
+            }
+            .less {
+                display: block;
+            }
+            svg {
+                transform: rotate(180deg);
+            }
+        }
     }
+}
+
+.history-nav {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
 }
 
 .prev-link,
 .next-link {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
+    position: absolute;
     display: block;
     border-radius: 9999px;
     border: 1px solid black;
@@ -130,7 +157,10 @@
 }
 
 .periods {
-    margin-bottom: 4rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     ul {
         list-style: none;
@@ -139,11 +169,6 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1px;
         background-color: white;
-
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
 
         li {
             a {
@@ -173,6 +198,26 @@
     display: none;
     &.open {
         display: block;
+    }
+
+    & > div {
+        overflow: hidden;
+        font-size: 3rem;
+        font-weight: 400;
+        line-height: 110%;
+        margin-bottom: 4rem;
+        &.odd {
+            img {
+                float: left;
+                padding-right: 3rem;
+            }
+        }
+        &.even {
+            img {
+                float: right;
+                padding-left: 3rem;
+            }
+        }
     }
 }
 

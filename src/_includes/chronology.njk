@@ -7,7 +7,7 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
 {% import "macros/pagination.njk" as pagination with context %}
 
 {%- set firstPost = collections.post[0] -%}
-<div class="container" data-barba="wrapper">
+<div class="container history" data-barba="wrapper">
 
     <nav class="timeline">
         <ol>
@@ -17,9 +17,9 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
         </ol>
     </nav>
 
-    <div data-barba="container" data-barba-namespace="home">
+    <article data-barba="container" data-barba-namespace="home">
 
-        <article class="period">
+        <header class="period">
             <h1>{{ period }}</h1>
             <div class="period__content">
                 <h2>{{ title }}</h2>
@@ -27,53 +27,46 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
                     <img src={{ titlePicture }} alt="" />
                 </figure>
             </div>
-            <a class="see_more" id="toggle_details" aria-controls="details" aria-expanded="false">
+            
+            <a href="#" class="see_more" id="toggle_details" aria-controls="details" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                <span>Plus de détails</span>
+                <span class="more">Plus de détails</span>
+                <span class="less">Moins de détails</span>
             </a>
-        </article>
 
-        <nav role="navigation">
-            {% set arrowLeft = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>' %}
-            {% set arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>' %}
-            {{ pagination.getPreviousItemInCollection('post', arrowLeft, 'prev-link') }}
-            {{ pagination.getNextItemInCollection('post', arrowRight, 'next-link') }}
-        </nav>
+            <nav class="history-nav" role="navigation">
+                {% set arrowLeft = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>' %}
+                {% set arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>' %}
+                {{ pagination.getPreviousItemInCollection('post', arrowLeft, 'prev-link') }}
+                {{ pagination.getNextItemInCollection('post', arrowRight, 'next-link') }}
+            </nav>
+        </header>
 
-    <div id="details" role="region" tabindex="-1">
-    {% set pos = 0 %}
-    {% for detail in details %}
-        {% if pos != details.length %}
-            <div style="margin-bottom: 20%">
-        {% else %}
-            <div>
-        {% endif %}
-            {% if pos % 2 == 0 %}
-                <img src={{ detail.img }} alt="" style="float: left; margin-right: 10px; padding-left:10px"></img>
+        <section id="details" role="region" tabindex="-1">
+        {% set cls = cycler("odd", "even") %}
+        {% for detail in details %}
+            <div class="{{ cls.next() }}">
+                <img src={{ detail.img }} alt="" />
                 <p>{{ detail.text }}</p>
-            {% else %}
-                <img src={{ detail.img }} alt="" style="float: right; margin-right: 10px; padding-right:10px"></img>
-                <p>{{ detail.text }}</p>
-            {% endif %}
-        </div>
-    {% set pos = pos + 1 %}
-    {% endfor %}
+            </div>
+        {% endfor %}
+        </section>
+
     </div>
-    </div> <!-- #details -->
 
-    {% set categories = ['Formation géologique', 'Peuplement', 'Contemporain'] %}
+</article>
 
-    <nav class="periods">
-        <ul>
-            {% for category in categories %}
-            <li>
-                <a href="#"{% if category in tags %} aria-current="page"{% endif %}>{{ category }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav>
+{% set categories = ['Formation géologique', 'Peuplement', 'Contemporain'] %}
 
-</div>
+<nav class="periods">
+    <ul>
+        {% for category in categories %}
+        <li>
+            <a href="#"{% if category in tags %} aria-current="page"{% endif %}>{{ category }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
 
 <script src=" https://cdn.jsdelivr.net/npm/@barba/core@2.9/dist/barba.umd.min.js "></script>
 <script src=" https://cdn.jsdelivr.net/npm/animejs@3.2/lib/anime.min.js "></script>
