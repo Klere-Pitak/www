@@ -3,6 +3,7 @@
     margin-top: 2rem;
     position: sticky;
     top: -1px;
+    z-index: 10;
 
     &.is-pinned {
         z-index: 10;

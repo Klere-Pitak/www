@@ -249,6 +249,9 @@
             text-align: center;
             padding-block: 2rem;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             a {
                 text-decoration: none;
