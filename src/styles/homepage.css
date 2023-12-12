@@ -5,8 +5,9 @@
         span {
             flex-grow: 2;
             display: block;
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 300;
+            line-height: 110%;
         }
         h1 {
             flex-grow: 12;
@@ -23,17 +24,17 @@
         padding-block: 2rem;
         margin-block: 4rem;
         .hero__banner-title {
-            font-size: 8rem;
             text-transform: uppercase;
             span:nth-child(1) {
+                font-size: 9.375rem;
                 margin-left: 10%;
             }
             span:nth-child(2) {
                 transform: rotate(-90deg);
                 display: inline-block;
-                font-size: 12rem;
+                font-size: 21.875rem;
                 font-weight: 500;
-                margin-left: 30%;
+                margin-left: 20%;
             }
         }
     }
@@ -67,18 +68,23 @@
     }
 
     .tag {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        margin-bottom: 3rem;
     }
 
     .history__description {
-        font-size: 4rem;
+        font-size: 6.3125rem;
+        font-weight: 400;
+        line-height: 7.5rem;
     }
 
     .actions {
         .btn {
-            font-size: 2rem;
+            font-size: 4rem;
+            padding-block: 2.5rem;
+            padding-inline: 4.5rem;
         }
-        margin-bottom: 2rem;
+        margin-block: 3rem;
     }
 
     .card {
@@ -121,8 +127,9 @@
         .tag {
             background-color: var(--color-lightgray);
             color: black;
-            padding-inline: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            padding-inline: 4.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .card__content {
@@ -132,14 +139,14 @@
 
             h1 {
                 width: 60%;
-                font-size: 3rem;
+                font-size: 4rem;
                 font-weight: normal;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
             }
 
             p {
                 width: 40%;
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
         }
 
@@ -161,7 +168,7 @@
             }
 
             .num {
-                font-size: 3rem;
+                font-size: 4rem;
                 &::before {
                     background-color: white;
                     content: '';
@@ -188,7 +195,8 @@
 
     .prensentation {
         width: 60%;
-        font-size: 4rem;
+        font-size: 5.6875rem;
+        font-weight: 800;
     }
 
     .authors {
@@ -205,17 +213,19 @@
     }
 
     .author__name {
-        font-size: 3rem;
-        font-weight: normal;
+        font-size: 4rem;
+        font-weight: 500;
     }
 
     .author__role {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        font-weight: 500;
         margin-bottom: 2rem;
     }
 
     .author__description {
-        font-size: 2rem;
+        font-size: 2.375rem;
+        font-weight: 500;
     }
 }
 
@@ -223,8 +233,8 @@
     margin-block: 4rem;
 
     .partner__title {
-        font-size: 1.5rem;
-        font-weight: normal;
+        font-size: 2rem;
+        font-weight: 500;
     }
 
     .partner__list {

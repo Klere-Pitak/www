@@ -23,7 +23,9 @@
 
                 span {
                     display: block;
-                    font-size: 0.8rem;
+                    font-size: 0.875rem;
+                    font-weight: 400;
+                    line-height: 110%;
                     white-space: nowrap;
                     padding-inline: 1rem;
                     opacity: 0;

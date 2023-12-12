@@ -1,6 +1,10 @@
-body {
-    font-family: Satoshi;
+html {
     font-size: var(--base-font-size);
+}
+
+body {
+    color: var(--color-darkgray);
+    font-family: Satoshi;
 }
 
 .container {
@@ -19,8 +23,10 @@ body {
     background-color: black;
     color: white;
     text-transform: uppercase;
-    padding-block: 0.2rem;
-    padding-inline: 1rem;
+    font-weight: 700;
+    line-height: 110%;
+    padding-block: 0.5rem;
+    padding-inline: 2.5rem;
 }
 
 .btn {

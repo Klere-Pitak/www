@@ -39,7 +39,8 @@
     }
 
     .site-name {
-        font-size: 4rem;
+        font-size: 6.25rem;
+        font-weight: 800;
         position: relative;
         padding-inline: 1rem;
 
@@ -101,11 +102,12 @@
             }
 
             svg {
-                width: 4rem;
-                height: 4rem;
+                width: 4.5rem;
+                height: 4.5rem;
                 border: 1px solid black;
                 border-radius: 9999px;
                 padding: 0.5rem;
+                margin-bottom: 0.625rem;
 
                 path {
                     stroke-width: 1px;
