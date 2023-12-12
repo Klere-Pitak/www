@@ -279,3 +279,73 @@
         }
     }
 }
+
+@media screen and (max-width: 800px) {
+    .hero {
+        .hero__content {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .hero__banner {
+            .hero__banner-title {
+                span:nth-child(2) {
+                    font-size: 10.875rem;
+                }
+            }
+        }
+    }
+    .history {
+        .history__description {
+            font-size: 2.3125rem;
+            font-weight: 400;
+            line-height: 2.8rem;
+        }
+        .actions {
+            .btn {
+                font-size: 2rem;
+                padding-block: 2.5rem;
+                padding-inline: 4.5rem;
+            }
+            margin-block: 3rem;
+        }
+        .card {
+            padding: 3rem 1rem;
+            .card__content {
+                flex-direction: column;
+                h1 {
+                    width: 100%;
+                    font-size: 2rem;
+                }
+                p {
+                    width: 100%;
+                    font-size: 2rem;
+                }
+            }
+            .tag {
+                font-size: 1rem;
+                padding-inline: 1.5rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+    .about {
+        .container {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .presentation {
+            width: 100%;
+            font-size: 2.6875rem;
+        }
+
+        .authors {
+            width: 100%;
+        }
+
+        .author__name {
+            font-size: 3rem;
+        }
+    }
+}
