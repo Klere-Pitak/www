@@ -43,17 +43,19 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
     <div id="details">
     {% set pos = 0 %}
     {% for detail in details %}
-            {% if pos % 2 == 0 %}
+        {% if pos != details.length %}
+            <div style="margin-bottom: 20%">
+        {% else %}
             <div>
+        {% endif %}
+            {% if pos % 2 == 0 %}
                 <img src={{ detail.img }} alt="" style="float: left; margin-right: 10px; padding-left:10px"></img>
                 <p>{{ detail.text }}</p>
-            </div>
             {% else %}
-            <div>
                 <img src={{ detail.img }} alt="" style="float: right; margin-right: 10px; padding-right:10px"></img>
                 <p>{{ detail.text }}</p>
-            </div>
             {% endif %}
+        </div>
     {% set pos = pos + 1 %}
     {% endfor %}
     </div>
