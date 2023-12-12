@@ -4,11 +4,14 @@
 @import 'animations.css';
 @import 'header.css';
 @import 'footer.css';
+@import 'menu.css';
 @import 'homepage.css';
 @import 'timeline.css';
 @import 'chronology.css';
 
 :root {
-    --color-blue: #4285f4;
-    --color-yellow: #ffcc00;
+    --color-blue: #6191ff;
+    --color-yellow: #fcdb38;
+
+    --base-font-size: 16px;
 }

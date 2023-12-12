@@ -11,23 +11,14 @@
 <body>
 
     {% include 'header.njk'  %}
+
+    {% include 'menu.njk'  %}
     
     <main>
         {{ content | safe }}
     </main>
 
-    <script>
-      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize)
-
-      const el = document.querySelector(".page-header")
-      const observer = new IntersectionObserver( 
-        ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-        { threshold: [1] }
-      );
-
-      observer.observe(el);
-
-    </script>
+    <script src="/scripts/main.js"></script>
 
 </body>
 </html>

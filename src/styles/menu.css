@@ -1,0 +1,100 @@
+.main-nenu {
+    background-color: #1e1e1e;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    padding-inline: 2rem;
+    padding-block: 2rem;
+    color: white;
+    width: 50%;
+    transition: transform 0.2s ease-in-out;
+    transform: translateX(100%);
+
+    @media (min-width: 80em) {
+        width: 33%;
+    }
+
+    &.open {
+        transform: translateX(0);
+    }
+
+    .btn-close {
+        border: 0 none;
+        background: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        float: right;
+        cursor: pointer;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+        transition: gap 0.2s ease-in-out;
+
+        span {
+            color: white;
+            line-height: 1;
+            text-transform: uppercase;
+            padding-inline: 0.8rem;
+        }
+
+        svg {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background-color: #efefef;
+            transition:
+                color 0.2s ease-in-out,
+                background-color 0.2s ease-in-out,
+                transform 0.2s ease-in-out;
+
+            path {
+                transform: scale(0.8);
+                transform-origin: center;
+            }
+        }
+
+        &:is(:hover, :focus) {
+            gap: 0.8rem;
+            svg {
+                background-color: var(--color-blue);
+                color: white;
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        clear: both;
+    }
+
+    a {
+        color: black;
+        display: block;
+        background-color: #efefef;
+        border-radius: 1rem;
+        padding-block: 1rem;
+        padding-inline: 2rem;
+        font-size: 3rem;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition:
+            color 0.2s ease-in-out,
+            background-color 0.2s ease-in-out;
+
+        &:is(:hover, :focus) {
+            background-color: var(--color-blue);
+            color: white;
+        }
+    }
+}
