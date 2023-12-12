@@ -67,7 +67,7 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
         const div = document.getElementById('details');
         if (expanded) {
             div.style.display = 'block';
-            div.scrollIntoView({ behavior: 'smooth' });
+            div.scrollIntoView({ behavior: 'smooth', block: "nearest" });
         } else {
             div.style.display = 'none';
         }
