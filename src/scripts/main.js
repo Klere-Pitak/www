@@ -12,7 +12,7 @@ observer.observe(pageHeader);
 document.querySelectorAll('[aria-controls]').forEach((el) => {
     const targetId = el.getAttribute('aria-controls');
     const target = document.getElementById(targetId);
-    console.log(el, targetId, target);
+
     el.addEventListener(
         'click',
         (e) => {

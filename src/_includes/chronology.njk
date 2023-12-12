@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 title: Découvrir l'Histoire de la Martinique
+permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
 ---
 
 {% import "macros/pagination.njk" as pagination with context %}
@@ -10,7 +11,7 @@ title: Découvrir l'Histoire de la Martinique
 
     <nav class="timeline">
         <ol>
-        {% for post in collections.post -%}
+        {% for post in collections.post | sortByDate  -%}
             <li><a href={{ post.url }}{% if post.url == page.url %} aria-current="page"{% endif %}><span>{{ post.data.shrunkPeriod }}</span></a></li>
         {% endfor -%}
         </ol>

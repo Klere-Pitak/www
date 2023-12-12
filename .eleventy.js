@@ -38,6 +38,12 @@ module.exports = function(eleventyConfig) {
         return collectionApi.getFilteredByGlob("_posts/*.md");
     });
 
+    function sortByDate(a, b) {
+        return Math.sign(Number(a.fileSlug) - Number(b.fileSlug))
+    }
+
+    eleventyConfig.addFilter('sortByDate', (values) => values.sort(sortByDate))
+
     return {
         dir: {
             input: "src",
