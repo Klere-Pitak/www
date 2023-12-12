@@ -11,7 +11,7 @@ Kléré, imaginée en 2022 par Mélody Moutamalle et Nora Domi, est une frise ch
 **Mélody MOUTAMALLE**
 Médiatrice culturelle et historique
 
-Chercheuse en histoire indépendante. Je travaille notamment sur la politique muséale en Martinique, et celle menée par les anciens conseil général et conseil régional, des années 1940 aux années 2000.
+Chercheuse en histoire indépendante. Je travaille notamment sur la politique muséale en Martinique, et celle menée par les anciens Conseil général et Conseil régional, des années 1940 aux années 2000.
 
 **Nora DOMI**
 Chargée de mission de médiation culturelle
