@@ -47,15 +47,48 @@ function slide(targets, step, direction) {
 
 const timeline = document.querySelector('.timeline');
 
+// Tell Barba to go to a specific URL and play your transitions
+// https://barba.js.org/docs/advanced/utils/
+function goto(e) {
+    e.preventDefault();
+    
+    const target = e.currentTarget;
+    const href = barba.url.parse(target.href).path;
+    barba.go(href, target, e);
+
+    return false;
+}
+
 // callback function to update the timeline's position
 function updateTimeline({ trigger }) {
     const href = barba.url.parse(trigger.href).path;
-    timeline.querySelectorAll('a').forEach((el) => el.removeAttribute('aria-current'));
-    const target = timeline.querySelector(`a[href="${href}"]`);
-    if (target) {
-        target.setAttribute('aria-current', 'page');
-    }
+    const currentLink = timeline.querySelector(`a[href="${href}"]`);
+    
+    timeline.querySelectorAll('a').forEach((el) => {
+        // update aria-current attribute
+        if (el === currentLink) {
+            el.setAttribute('aria-current', 'page');
+        } else {
+            el.removeAttribute('aria-current')
+        }
+
+        // update data attribute `direction` used by Barba transitions
+        const position = currentLink && currentLink.compareDocumentPosition(el)
+        if (position & Node.DOCUMENT_POSITION_FOLLOWING) {
+            el.setAttribute('data-direction', 'next');
+        } else if (position & Node.DOCUMENT_POSITION_PRECEDING) {
+            el.setAttribute('data-direction', 'prev');
+        } else {
+            el.removeAttribute('data-direction', 'prev');
+        }
+
+        // update click event listener
+        el.removeEventListener('click', goto, false);
+        el.addEventListener('click', goto, false);
+    });
 }
+
+updateTimeline({ trigger: timeline.querySelector('a[aria-current="page"]') })
 
 barba.init({
     debug: false,
@@ -79,35 +112,7 @@ barba.init({
     ],
 });
 
-// make timeline's link triggering navigation transition
-timeline.querySelectorAll('a').forEach((el) => {
-    el.addEventListener(
-        'click',
-        (e) => {
-            e.preventDefault();
-            const target = e.currentTarget;
-            const currentHref = barba.url.parse(barba.history.current.url).path;
-
-            // get target position compare to current and update target data attribute `direction` used by Barba transitions
-            const currentPosition = timeline.querySelector(`a[href="${currentHref}"]`);
-            if (currentPosition && currentPosition.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_FOLLOWING) {
-                target.setAttribute('data-direction', 'next');
-            } else {
-                target.setAttribute('data-direction', 'prev');
-            }
-
-            // trigger navigation
-            // https://barba.js.org/docs/advanced/utils/
-            barba.go(target.href, target, e);
-
-            return false;
-        },
-        false,
-    );
-});
-
 // scroll to details when opening
-
 document.getElementById('toggle_details').addEventListener(
     'click',
     () => {

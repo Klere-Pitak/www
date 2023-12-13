@@ -1,12 +1,14 @@
 .page-header {
     background-color: white;
-    margin-top: 2rem;
+    padding-top: 2rem;
     position: sticky;
     top: -1px;
     z-index: 10;
 
     &.is-pinned {
         z-index: 10;
+        padding-top: 0;
+        transition: padding 0.2s ease;
         .site-name {
             transition: font-size 0.2s ease;
             font-size: 2rem;
@@ -26,6 +28,7 @@
                     width: 2rem;
                     border: 0 none;
                     padding: 0;
+                    margin: 0;
                 }
             }
         }

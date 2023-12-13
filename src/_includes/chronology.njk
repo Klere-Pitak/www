@@ -23,9 +23,11 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
             <h1>{{ period }}</h1>
             <div class="period__content">
                 <h2>{{ title }}</h2>
+                {% if titlePicture %}
                 <figure>
                     <img src={{ titlePicture }} alt="" />
                 </figure>
+                {% endif %}
             </div>
             
             <a href="#" class="see_more" id="toggle_details" aria-controls="details" aria-expanded="false">

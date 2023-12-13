@@ -27,12 +27,19 @@
         font-size: 6.25rem;
         font-weight: 900;
         line-height: 110%;
-        width: 50%;
+        flex-grow: 1;
+        flex-shrink: 2;
     }
 
     figure {
-        margin-inline: auto;
         transform: rotate(-3deg);
+        flex-basis: 50%;
+        flex-grow: 1;
+        flex-shrink: 1;
+
+        img {
+            margin-inline: auto;
+        }
     }
 
     .see_more {
@@ -42,6 +49,7 @@
         line-height: 150%;
         text-decoration: none;
         display: inline-flex;
+        margin-inline: 4rem;
         align-items: center;
         gap: 1rem;
         transition: color 0.1s ease-in-out;
@@ -223,6 +231,15 @@
 
 [data-barba='wrapper'] {
     position: relative;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "timeline" 
+        "main";
+
+    .timeline {
+        grid-area: timeline;
+    }
 
     &.is-animating {
         .prev-link,
@@ -233,12 +250,13 @@
 }
 
 [data-barba='container'] {
+    grid-area: main;
     will-change: transform;
 
-    .is-animating > & {
+    /* .is-animating > & {
         position: absolute;
         width: calc(100% - 4rem);
-    }
+    } */
 }
 
 .collapsible {
