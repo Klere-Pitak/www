@@ -1,5 +1,4 @@
 .timeline {
-    background-color: var(--color-yellow);
     position: sticky;
     top: 3rem;
     z-index: 9;
@@ -10,6 +9,12 @@
         justify-content: space-around;
         flex-wrap: nowrap;
         padding-inline: 2rem;
+        background-color: var(--backgroundColor);
+    
+        display: none;
+        &.active {
+            display: flex;
+        }
 
         li {
             display: block;
@@ -18,11 +23,12 @@
                 display: block;
                 text-align: center;
                 padding-block: 1rem 0.5rem;
-                color: inherit;
+                color: var(--backgroundColor);
                 text-decoration: none;
 
                 span {
                     display: block;
+                    color: var(--color);
                     font-size: 0.875rem;
                     font-weight: 400;
                     line-height: 110%;
@@ -38,7 +44,7 @@
                     display: inline-block;
                     height: 2rem;
                     width: 3px;
-                    background-color: black;
+                    background-color: var(--color);
                     transition: all 0.2s cubic-bezier(.47,1.64,.41,.8);
                 }
             }

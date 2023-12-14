@@ -1,13 +1,5 @@
 const { anime, barba } = window;
 
-barba.hooks.before(function () {
-    barba.wrapper.classList.add('is-animating');
-});
-
-barba.hooks.after(function () {
-    barba.wrapper.classList.remove('is-animating');
-});
-
 function slide(targets, step, direction) {
     const duration = 1000;
     const from = step === 'leave' ? 0 : 100;
@@ -60,9 +52,27 @@ function goto(e) {
 }
 
 // callback function to update the timeline's position
-function updateTimeline({ trigger }) {
+function updateView({ trigger }) {
     const href = barba.url.parse(trigger.href).path;
     const currentLink = timeline.querySelector(`a[href="${href}"]`);
+
+    const category = href.match(/[^/]+/gi)[0]
+
+    timeline.querySelectorAll('ol').forEach((ol) => {
+        if (ol.classList.contains(category)) {
+            ol.classList.add('active')
+        } else {
+            ol.classList.remove('active')
+        }
+    })
+
+    document.querySelectorAll('.periods a').forEach((a) => {
+        if (a.classList.contains(category)) {
+            a.setAttribute('aria-current', 'page')
+        } else {
+            a.removeAttribute('aria-current')
+        }
+    })
     
     timeline.querySelectorAll('a').forEach((el) => {
         // update aria-current attribute
@@ -88,7 +98,36 @@ function updateTimeline({ trigger }) {
     });
 }
 
-updateTimeline({ trigger: timeline.querySelector('a[aria-current="page"]') })
+
+
+// scroll to details when opening
+function attachDetailsEventListener({ next }) {
+    next.container.querySelector('#toggle_details').addEventListener(
+        'click',
+        (event) => {
+            const details = next.container.querySelector('#details');
+            console.log('attachDetailsEventListener', next.container, details)
+            const isOpen = details.classList.contains('open');
+            if (isOpen) {
+                details.classList.remove('open');
+            } else {
+                details.classList.add('open');
+                setTimeout(() => {
+                    details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 10);
+            }
+            event.currentTarget.setAttribute('aria-expanded', !isOpen);
+        },
+        false,
+    );
+}
+
+function hideDetails() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+        document.querySelector('#details').remove('open');
+    }, 200)
+}
 
 barba.init({
     debug: false,
@@ -99,7 +138,6 @@ barba.init({
             custom: ({ trigger }) => trigger.dataset && trigger.dataset.direction === 'next',
             leave: ({ current }) => slide(current.container, 'leave', 'next'),
             enter: ({ next }) => slide(next.container, 'enter', 'next'),
-            beforeEnter: updateTimeline,
         },
         {
             name: 'previous',
@@ -107,22 +145,27 @@ barba.init({
             custom: ({ trigger }) => trigger.dataset && trigger.dataset.direction === 'prev',
             leave: ({ current }) => slide(current.container, 'leave', 'prev'),
             enter: ({ next }) => slide(next.container, 'enter', 'prev'),
-            beforeEnter: updateTimeline,
         },
     ],
 });
 
-// scroll to details when opening
-document.getElementById('toggle_details').addEventListener(
-    'click',
-    () => {
-        // add delay in the event stack to ensure composent is displayed before scrolling
-        setTimeout(() => {
-            const details = document.getElementById('details');
-            if (details.classList.contains('open')) {
-                details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        }, 10);
-    },
-    false,
-);
+barba.hooks.before(function () {
+    barba.wrapper.classList.add('is-animating');
+    hideDetails();
+});
+
+barba.hooks.after(function () {
+    barba.wrapper.classList.remove('is-animating');
+});
+
+barba.hooks.beforeEnter((data) => {
+    updateView(data)
+    attachDetailsEventListener(data)
+})
+
+
+// initialize
+
+updateView({ trigger: timeline.querySelector('a[aria-current="page"]') })
+
+attachDetailsEventListener({ next: { container: document } })

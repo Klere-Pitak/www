@@ -8,9 +8,9 @@
     &.is-pinned {
         z-index: 10;
         padding-top: 0;
-        transition: padding 0.2s ease;
+        transition: padding 0.5s ease;
         .site-name {
-            transition: font-size 0.2s ease;
+            transition: font-size 0.5s ease;
             font-size: 2rem;
         }
         .nav-list {
@@ -20,10 +20,10 @@
                     flex-direction: row;
                     align-items: center;
                     gap: 0.5rem;
-                    transition: all 0.2s ease;
+                    transition: all 0.5s ease;
                 }
                 svg {
-                    transition: all 0.2s ease;
+                    transition: all 0.5s ease;
                     height: 2rem;
                     width: 2rem;
                     border: 0 none;

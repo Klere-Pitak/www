@@ -7,13 +7,14 @@
     </button>
     <ul>
         <li>
-            <a href="#">Chronologie</a>
+            {% set posts = collections.post | sortByDate %}
+            <a href="{{ posts[0].url }}">Chronologie</a>
         </li>
         <li>
-            <a href="#">À propos</a>
+            <a href="/about">À propos</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="mailto:bonjour@klere.fr">Contact</a>
         </li>
     </ul>
 </nav>

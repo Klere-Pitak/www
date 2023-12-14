@@ -4,17 +4,17 @@ title: Découvrir l'Histoire de la Martinique
 permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
 ---
 
-{% import "macros/pagination.njk" as pagination with context %}
-
 {%- set firstPost = collections.post[0] -%}
 <div class="container history" data-barba="wrapper">
 
     <nav class="timeline">
-        <ol>
-        {% for post in collections.post | sortByDate  -%}
+        {% for cat, items in collections.post | sortByDate | groupby('data.category') %}
+        <ol class="{{ cat | slugify }}{% if category == cat %} active{% endif %}">
+        {% for post in items  -%}
             <li><a href={{ post.url }}{% if post.url == page.url %} aria-current="page"{% endif %}><span>{{ post.data.shrunkPeriod }}</span></a></li>
         {% endfor -%}
         </ol>
+        {% endfor %}
     </nav>
 
     <article data-barba="container" data-barba-namespace="home">
@@ -37,10 +37,20 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
             </a>
 
             <nav class="history-nav" role="navigation">
-                {% set arrowLeft = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>' %}
-                {% set arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>' %}
-                {{ pagination.getPreviousItemInCollection('post', arrowLeft, 'prev-link') }}
-                {{ pagination.getNextItemInCollection('post', arrowRight, 'next-link') }}
+                {% set previous = collections.post | getPreviousCollectionItem %}
+                {% set next = collections.post | getNextCollectionItem %}
+
+                {% if previous %}
+                <a href="{{ previous.url | url }}" class="prev-link" aria-label="Précédent" data-direction="prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+                </a>
+                {% endif %}
+
+                {% if next %}
+                <a href="{{ next.url | url }}" class="next-link" aria-label="Suivant" data-direction="next">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </a>
+                {% endif %}
             </nav>
         </header>
 
@@ -56,19 +66,17 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
 
     </div>
 
+    <nav class="periods">
+        <ul>
+            {% for cat, items in collections.post | groupby('data.category') %}
+            <li>
+                <a class="{{ cat | slugify }}" href="{{ items[0].url }}"{% if category == cat %} aria-current="page"{% endif %}>{{ cat }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
 </article>
-
-{% set categories = ['Formation géologique', 'Peuplement', 'Contemporain'] %}
-
-<nav class="periods">
-    <ul>
-        {% for category in categories %}
-        <li>
-            <a href="#"{% if category in tags %} aria-current="page"{% endif %}>{{ category }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</nav>
 
 <script src=" https://cdn.jsdelivr.net/npm/@barba/core@2.9/dist/barba.umd.min.js "></script>
 <script src=" https://cdn.jsdelivr.net/npm/animejs@3.2/lib/anime.min.js "></script>

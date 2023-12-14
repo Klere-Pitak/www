@@ -7,9 +7,8 @@ const observer = new IntersectionObserver(([e]) => e.target.classList.toggle('is
 });
 observer.observe(pageHeader);
 
-/** controllables element */
-
-document.querySelectorAll('[aria-controls]').forEach((el) => {
+/** main menu collapsible */
+document.querySelectorAll('[aria-controls="main-menu"]').forEach((el) => {
     const targetId = el.getAttribute('aria-controls');
     const target = document.getElementById(targetId);
 

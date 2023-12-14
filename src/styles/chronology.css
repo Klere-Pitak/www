@@ -1,6 +1,7 @@
 .period {
     padding-block: 2rem;
     position: relative;
+    min-height: calc(100dvh - 120px); /* petit hack lié au header sticky */
 
     h1 {
         display: inline-block;
@@ -106,7 +107,7 @@
 }
 
 .history-nav {
-    position: fixed;
+    position: absolute;
     top: 50%;
     width: 100%;
     transform: translateY(-50%);
@@ -194,8 +195,8 @@
                     background-color 0.2s ease;
 
                 &:where(:hover, :focus, [aria-current='page']) {
-                    background-color: var(--color-yellow);
-                    color: black;
+                    background-color: var(--backgroundColor);
+                    color: var(--color);
                 }
             }
         }
@@ -204,6 +205,7 @@
 
 #details {
     display: none;
+    scroll-margin-top: 18rem;
     &.open {
         display: block;
     }
@@ -269,11 +271,11 @@
     text-align: left;
     outline: none;
     font-size: 15px;
-}
-
-.active,
-.collapsible:hover {
-    background-color: #555;
+    
+    &.active,
+    &:hover {
+        background-color: #555;
+    }
 }
 
 .content {

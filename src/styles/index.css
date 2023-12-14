@@ -20,3 +20,23 @@
 
     --base-font-size: 16px;
 }
+
+.formation-geologique {
+    --backgroundColor: var(--color-yellow);
+    --color: black;
+}
+
+.peuplement {
+    --backgroundColor: var(--color-green);
+    --color: white;
+}
+
+.colonisation {
+    --backgroundColor: var(--color-red);
+    --color: white;
+}
+
+.contemporain {
+    --backgroundColor: var(--color-pink);
+    --color: black;
+}
