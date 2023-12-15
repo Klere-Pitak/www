@@ -141,7 +141,7 @@ barba.init({
     debug: true,
     prevent: ({ href }) => {
         // prevent transition to root url
-        return barba.url.parse(href).path === '/';
+        return ['/', '/about'].includes(barba.url.parse(href).path);
     },
     transitions: [
         {

@@ -49,3 +49,30 @@ body {
         line-height: 1;
     }
 }
+
+.page__title {
+    border-top: 1px solid black;
+    margin-block: 4rem;
+    padding-top: 2rem;
+    position: relative;
+
+    &::before {
+        content: '';
+        height: 1rem;
+        border-left: 1px solid black;
+        display: block;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+    }
+
+    &::after {
+        content: '';
+        height: 1rem;
+        border-left: 1px solid black;
+        display: block;
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+}

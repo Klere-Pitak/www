@@ -2,7 +2,7 @@
 layout: base.njk
 title: Découvrir l'Histoire de la Martinique
 ---
-{% include 'banner.njk'  %}
+{% include 'hero.njk' %}
 
 <section class="history container">
     <div class="history__content">
@@ -29,39 +29,8 @@ title: Découvrir l'Histoire de la Martinique
     </div>
 </section>
 
-<section class="about">
-    <div class="container">
-        <p class="presentation"><strong>Kléré</strong> imaginé en 2022 par Mélody Moutamalle et Nora Domi, est une <strong>frise chronologique</strong> numérique sur l'<strong>Histoire de la Martinique</strong>. Elle a pour but de mettre en valeur toute l'histoire de l'île en partant de sa formation géologique jusqu'à maintenant.</p>
-        <aside class="authors">
-            <article class="author">
-                <h2 class="author__name">Mélodie MOUTAMALLE</h2>
-                <p class="author__role">Médiatrice culturelle et historique</p>
-                <p class="author__description">Chercheuse en Histoire indépendante. Je travaille notamment sur la politique muséale en Martiniqiue, et celle menée par les anciens Conseil général et Conseil régional, des années 1940 aux années 2000.</p>
-            </article>
-            <article class="author">
-                <h2>Nora DOMI</h2>
-                <p class="author__role">Chargée de mission de médiation culturelle</p>
-            </article>
-        </div>
-    </div>
-</section>
+{% include 'about.njk' %}
 
-<aside class="partners">
-    <div class="container">
-        <h3 class="partner__title">Partenaires</h3>
-        <ul role="list" class="partner__list">
-            <li>
-                <a href="https://webmonster.tech/">
-                    <img src="/assets/webmonster.svg" alt="Webmonster" />
-                </a>
-            </li>
-            <li>
-                <a href="https://www.pitak.fr/">
-                    <img src="/assets/pitak.svg" alt="Pitak" />
-                </a>
-            </li>
-        </ul>
-    </div>
-</aside>
+{% include 'partners.njk' %}
 
 {% include 'footer.njk' %}
