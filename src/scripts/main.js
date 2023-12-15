@@ -7,6 +7,16 @@ const observer = new IntersectionObserver(([e]) => e.target.classList.toggle('is
 });
 observer.observe(pageHeader);
 
+const mainMenu = document.getElementById('main-menu');
+
+// close menu on click on nav links
+mainMenu.querySelectorAll('nav a').forEach((a) => {
+    a.addEventListener('click', () => {
+        mainMenu.classList.remove('open');
+        mainMenu.setAttribute('aria-expanded', 'false');
+    }, false);
+});
+
 /** main menu collapsible */
 document.querySelectorAll('[aria-controls="main-menu"]').forEach((el) => {
     const targetId = el.getAttribute('aria-controls');
