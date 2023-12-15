@@ -54,7 +54,7 @@
 
         &::before {
             content: '';
-            height: 20px;
+            height: 1rem;
             border-left: 1px solid black;
             display: block;
             bottom: 0;
@@ -86,7 +86,7 @@
 
             &:first-child::before {
                 content: '';
-                height: 20px;
+                height: 1rem;
                 border-left: 1px solid black;
                 display: block;
                 bottom: 0;
@@ -96,7 +96,7 @@
 
             &::after {
                 content: '';
-                height: 20px;
+                height: 1rem;
                 border-left: 1px solid black;
                 display: block;
                 bottom: 0;

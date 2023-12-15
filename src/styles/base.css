@@ -23,6 +23,7 @@ body {
     background-color: black;
     color: white;
     text-transform: uppercase;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 110%;
     padding-block: 0.5rem;

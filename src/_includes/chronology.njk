@@ -57,13 +57,20 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
         </header>
 
         <section id="details" role="region" tabindex="-1">
-        {% set cls = cycler("odd", "even") %}
-        {% for detail in details %}
+            <header>
+                <h2>{{ title }}</h2>
+                <span class="tag">{{ period }}</span>
+            </header>
+            
+            {% set cls = cycler("odd", "even") %}
+            {% for detail in details %}
             <div class="{{ cls.next() }}">
                 <img src={{ detail.img }} alt="" />
                 <p>{{ detail.text }}</p>
             </div>
-        {% endfor %}
+            {% endfor %}
+
+            {% include 'footer.njk'  %}
         </section>
 
     </div>

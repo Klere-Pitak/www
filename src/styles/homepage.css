@@ -48,7 +48,7 @@
 
         &::before {
             content: '';
-            height: 20px;
+            height: 1rem;
             border-left: 1px solid black;
             display: block;
             bottom: 0;
@@ -58,7 +58,7 @@
 
         &::after {
             content: '';
-            height: 20px;
+            height: 1rem;
             border-left: 1px solid black;
             display: block;
             top: 0;
@@ -67,15 +67,11 @@
         }
     }
 
-    .tag {
-        font-size: 2rem;
-        margin-bottom: 3rem;
-    }
-
     .history__description {
         font-size: 6.3125rem;
         font-weight: 400;
         line-height: 7.5rem;
+        margin-top: 3rem;
     }
 
     .actions {
@@ -127,7 +123,6 @@
         .tag {
             background-color: var(--color-lightgray);
             color: black;
-            font-size: 2rem;
             padding-inline: 4.5rem;
             margin-bottom: 1.5rem;
         }
@@ -247,7 +242,7 @@
 
         &::before {
             content: '';
-            height: 20px;
+            height: 1rem;
             border-left: 1px solid black;
             display: block;
             bottom: 0;
@@ -269,7 +264,7 @@
 
             &::after {
                 content: '';
-                height: 20px;
+                height: 1rem;
                 border-left: 1px solid black;
                 display: block;
                 bottom: 0;
@@ -322,7 +317,6 @@
                 }
             }
             .tag {
-                font-size: 1rem;
                 padding-inline: 1.5rem;
                 width: 100%;
                 text-align: center;

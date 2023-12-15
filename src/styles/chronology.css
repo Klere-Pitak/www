@@ -1,5 +1,5 @@
 .period {
-    padding-block: 2rem;
+    padding-block: 2rem 4rem;
     position: relative;
     min-height: calc(100dvh - 120px); /* petit hack lié au header sticky */
     display: grid;
@@ -213,9 +213,45 @@
 
 #details {
     display: none;
-    scroll-margin-top: 18rem;
+    scroll-margin-top: 9rem;
+    margin-bottom: 4rem;
+
     &.open {
         display: block;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid black;
+        margin-bottom: 4rem;
+        position: relative;
+        padding-inline: 1rem;
+        padding-bottom: 0.8rem;
+
+        &::before {
+            content: '';
+            border-left: 1px solid black;
+            height: 1rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        &::after {
+            content: '';
+            border-left: 1px solid black;
+            height: 1rem;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
     }
 
     & > div {

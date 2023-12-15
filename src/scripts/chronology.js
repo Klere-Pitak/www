@@ -111,14 +111,14 @@ function attachDetailsEventListener({ next }) {
             const isOpen = details.classList.contains('open');
 
             if (isOpen) {
-                details.classList.remove('open');
+                hideDetails(details)
             } else {
                 details.classList.add('open');
                 setTimeout(() => {
                     details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 10);
             }
-            
+
             event.currentTarget.setAttribute('aria-expanded', !isOpen);
             
             return false;
@@ -127,10 +127,10 @@ function attachDetailsEventListener({ next }) {
     );
 }
 
-function hideDetails() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+function hideDetails(details) {
+    window.scrollTo({ top: 50, behavior: 'smooth' });
     setTimeout(() => {
-        document.querySelector('#details').classList.remove('open');
+        (details || document.querySelector('#details')).classList.remove('open');
     }, 200)
 }
 
