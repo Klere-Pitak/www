@@ -7,8 +7,7 @@
     </button>
     <ul>
         <li>
-            {% set posts = collections.post | sortByDate %}
-            <a href="{{ posts[0].url }}">Chronologie</a>
+            <a href="{{ (collections.post | sortByDate | first).url }}">Chronologie</a>
         </li>
         <li>
             <a href="/about">À propos</a>
