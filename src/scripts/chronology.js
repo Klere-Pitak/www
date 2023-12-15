@@ -55,7 +55,6 @@ function goto(e) {
 function updateView({ trigger }) {
     const href = barba.url.parse(trigger.href).path;
     const currentLink = timeline.querySelector(`a[href="${href}"]`);
-
     const category = href.match(/[^/]+/gi)[0]
 
     timeline.querySelectorAll('ol').forEach((ol) => {
@@ -102,7 +101,11 @@ function updateView({ trigger }) {
 
 // scroll to details when opening
 function attachDetailsEventListener({ next }) {
-    next.container.querySelector('#toggle_details').addEventListener(
+    const toggleBtn = next.container.querySelector('#toggle_details')
+    if (!toggleBtn) {
+        return;
+    }
+    toggleBtn.addEventListener(
         'click',
         (event) => {
             event.preventDefault();
@@ -135,7 +138,11 @@ function hideDetails(details) {
 }
 
 barba.init({
-    debug: false,
+    debug: true,
+    prevent: ({ href }) => {
+        // prevent transition to root url
+        return barba.url.parse(href).path === '/';
+    },
     transitions: [
         {
             name: 'next',
@@ -168,9 +175,8 @@ barba.hooks.beforeEnter((data) => {
     attachDetailsEventListener(data)
 })
 
-
 // initialize
-
-updateView({ trigger: timeline.querySelector('a[aria-current="page"]') })
-
-attachDetailsEventListener({ next: { container: document } })
+document.addEventListener('DOMContentLoaded', function() {
+    updateView({ trigger: timeline.querySelector('a[aria-current="page"]') })
+    attachDetailsEventListener({ next: { container: document.body } })
+})
