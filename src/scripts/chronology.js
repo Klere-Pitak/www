@@ -105,9 +105,11 @@ function attachDetailsEventListener({ next }) {
     next.container.querySelector('#toggle_details').addEventListener(
         'click',
         (event) => {
+            event.preventDefault();
+
             const details = next.container.querySelector('#details');
-            console.log('attachDetailsEventListener', next.container, details)
             const isOpen = details.classList.contains('open');
+
             if (isOpen) {
                 details.classList.remove('open');
             } else {
@@ -116,7 +118,10 @@ function attachDetailsEventListener({ next }) {
                     details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 10);
             }
+            
             event.currentTarget.setAttribute('aria-expanded', !isOpen);
+            
+            return false;
         },
         false,
     );
@@ -125,7 +130,7 @@ function attachDetailsEventListener({ next }) {
 function hideDetails() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
-        document.querySelector('#details').remove('open');
+        document.querySelector('#details').classList.remove('open');
     }, 200)
 }
 
