@@ -2,6 +2,11 @@
     padding-block: 2rem;
     position: relative;
     min-height: calc(100dvh - 120px); /* petit hack lié au header sticky */
+    display: grid;
+    grid-template:
+        "topleft topcenter topright" 0fr 
+        "middle middle middle" 1fr 
+        "bottom bottom bottom";
 
     h1 {
         display: inline-block;
@@ -12,9 +17,11 @@
         line-height: 110%;
         padding: 1.5rem 2.5rem;
         float: right;
+        grid-area: topright;
     }
 
     .period__content {
+        grid-area: middle;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -44,6 +51,7 @@
     }
 
     .see_more {
+        grid-area: bottom;
         color: black;
         font-size: 2rem;
         font-weight: 400;
