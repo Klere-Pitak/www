@@ -82,100 +82,6 @@
         }
         margin-block: 3rem;
     }
-
-    .card {
-        background-color: var(--color-blue);
-        color: white;
-        border-radius: 1rem;
-        padding: 3rem 4rem;
-        position: relative;
-        margin-top: calc(4rem + 80px);
-        margin-bottom: 4rem;
-
-        &::before {
-            background-color: var(--color-blue);
-            filter: brightness(90%);
-            border-radius: 1rem;
-            content: '';
-            display: block;
-            top: -40px;
-            position: absolute;
-            z-index: -1;
-            left: 40px;
-            right: 40px;
-            bottom: 40px;
-        }
-
-        &::after {
-            background-color: var(--color-blue);
-            filter: brightness(80%);
-            border-radius: 1rem;
-            content: '';
-            display: block;
-            top: -80px;
-            position: absolute;
-            z-index: -2;
-            left: 80px;
-            right: 80px;
-            bottom: 80px;
-        }
-
-        .tag {
-            background-color: var(--color-lightgray);
-            color: black;
-            padding-inline: 4.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card__content {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-
-            h1 {
-                width: 60%;
-                font-size: 4rem;
-                font-weight: normal;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            }
-
-            p {
-                width: 40%;
-                font-size: 2rem;
-            }
-        }
-
-        .card__footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
-
-            .btn {
-                background-color: var(--color-lightgray);
-                color: var(--color-blue);
-                font-size: 2rem;
-                line-height: 5rem;
-                text-align: center;
-                width: 5rem;
-                height: 5rem;
-                padding: 1rem;
-            }
-
-            .num {
-                font-size: 4rem;
-                &::before {
-                    background-color: white;
-                    content: '';
-                    display: inline-block;
-                    height: 3px;
-                    width: 60px;
-                    margin-block: 1rem;
-                    margin-right: 1rem;
-                }
-            }
-        }
-    }
 }
 
 .about {
@@ -298,29 +204,10 @@
         .actions {
             .btn {
                 font-size: 2rem;
-                padding-block: 2.5rem;
-                padding-inline: 4.5rem;
+                padding-block: 1rem;
+                padding-inline: 2.5rem;
             }
             margin-block: 3rem;
-        }
-        .card {
-            padding: 3rem 1rem;
-            .card__content {
-                flex-direction: column;
-                h1 {
-                    width: 100%;
-                    font-size: 2rem;
-                }
-                p {
-                    width: 100%;
-                    font-size: 2rem;
-                }
-            }
-            .tag {
-                padding-inline: 1.5rem;
-                width: 100%;
-                text-align: center;
-            }
         }
     }
     .about {

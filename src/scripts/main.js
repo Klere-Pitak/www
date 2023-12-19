@@ -43,3 +43,33 @@ document.querySelectorAll('[aria-controls="main-menu"]').forEach((el) => {
         false,
     );
 });
+
+// history slider on homepage
+document.querySelectorAll('.cards').forEach(cards => {
+    cards.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (!e.currentTarget.getAttribute('aria-current')) {
+                const current = cards.querySelector('[aria-current="true"]')
+                const items = cards.querySelectorAll('.card')
+                const index = Array.prototype.indexOf.call(items, e.currentTarget);
+                const previousItems = Array.prototype.slice.call(items, 0, index)
+                current.removeAttribute('aria-current');
+                e.currentTarget.setAttribute('aria-current', true)
+
+                previousItems.forEach((item, i) => {
+                    item.style.animation = `card-exit-${i} 600ms forwards linear`;
+                    setTimeout(() => {
+                        item.style.top = 0;
+                        item.style.marginLeft = item.style.marginRight = 0;
+                        item.style.animation = '';
+                        cards.appendChild(item);
+                        setTimeout(() => {
+                            item.style.top = '';
+                            item.style.marginLeft = item.style.marginRight = '';
+                        }, 10)
+                    }, 600+10)
+                })
+            }
+        }, false);
+    })
+})

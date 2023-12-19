@@ -1,0 +1,227 @@
+.cards {
+    position: relative;
+    margin-top: calc(4rem + 80px);
+    padding: 0;
+}
+
+.card {
+    background-color: var(--color-blue);
+    color: white;
+    border-radius: 1rem;
+    list-style: none;
+    position: absolute;
+    margin-bottom: 4rem;
+    padding: 3rem 4rem;
+    max-height: 100%;
+    overflow: clip;
+    will-change: transform;
+
+    --card-transition-duration: 300ms;
+
+    transition: all var(--card-transition-duration) ease-in-out;
+
+    & > * {
+        opacity: 0;
+        transition: opacity var(--card-transition-duration) ease-in-out;
+    }
+
+    &[aria-current="true"] {
+        opacity: 1;
+        position: relative;
+        top: 0;
+        margin-inline: 0;
+        z-index: 4;
+
+        & > * {
+            opacity: 1;
+        }
+
+        & ~ .card {
+            opacity: 1;
+            position: absolute;
+            cursor: pointer;
+            word-break: break-all;
+        }
+
+        & + .card {
+            top: -2rem;
+            margin-inline: 4rem;
+            z-index: 3;
+            filter: brightness(0.9);
+
+            & + .card {
+                top: -4rem;
+                margin-inline: 8rem;
+                z-index: 2;
+                filter: brightness(0.8);
+
+                & + .card {
+                    top: -6rem;
+                    margin-inline: 12rem;
+                    z-index: 1;
+                    filter: brightness(0.7);
+                }
+            }
+        }
+    }
+
+    .tag {
+        background-color: var(--color-lightgray);
+        color: black;
+        padding-inline: 4.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .card__content {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+
+        h1 {
+            width: 60%;
+            font-size: 4rem;
+            font-weight: normal;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            width: 40%;
+            font-size: 2rem;
+        }
+    }
+
+    .card__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+
+        .btn {
+            background-color: var(--color-lightgray);
+            color: var(--color-blue);
+            font-size: 2rem;
+            line-height: 5rem;
+            text-align: center;
+            width: 5rem;
+            height: 5rem;
+            padding: 1rem;
+            
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+
+            &:is(:hover, :focus) {
+                animation: pulse 2s infinite;
+            }
+        }
+
+        .card__step {
+            font-size: 4rem;
+            &::before {
+                content: '—';
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card {
+        padding: 3rem 1rem;
+        .card__content {
+            flex-direction: column;
+            h1 {
+                width: 100%;
+                font-size: 2rem;
+            }
+            p {
+                width: 100%;
+                font-size: 2rem;
+            }
+        }
+        .tag {
+            padding-inline: 1.5rem;
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+    }
+}
+
+@keyframes card-exit-0 {
+    0% {
+        opacity: 1;
+        top: 0;
+        margin-inline: 0;
+        z-index: 4;
+    }
+    50% {
+        opacity: 0;
+        top: 2rem;
+        margin-inline: -4rem;
+        z-index: 5;
+        filter: brightness(1);
+    }
+    100% {
+        opacity: 0;
+        top: 0;
+        margin-inline: 0;
+        z-index: 1;
+        filter: brightness(0.7);
+    }
+}
+
+@keyframes card-exit-1 {
+    0% {
+        opacity: 1;
+        top: -2rem;
+        margin-inline: 4rem;
+        z-index: 3;
+    }
+    50% {
+        opacity: 0;
+        top: 2rem;
+        margin-inline: -4rem;
+        z-index: 5;
+        filter: brightness(1);
+    }
+    100% {
+        opacity: 0;
+        top: 0;
+        margin-inline: 0;
+        z-index: 1;
+        filter: brightness(0.7);
+    }
+}
+
+@keyframes card-exit-2 {
+    0% {
+        opacity: 1;
+        top: -4rem;
+        margin-inline: 8rem;
+        z-index: 2;
+    }
+    50% {
+        opacity: 0;
+        top: 2rem;
+        margin-inline: -4rem;
+        z-index: 5;
+        filter: brightness(1);
+    }
+    100% {
+        opacity: 0;
+        top: 0;
+        margin-inline: 0;
+        z-index: 1;
+        filter: brightness(0.7);
+    }
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+	70% {
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}

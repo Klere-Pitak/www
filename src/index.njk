@@ -11,21 +11,68 @@ title: Découvrir l'Histoire de la Martinique
         <div class="actions">
             <a class="btn btn-primary" href="{{ (collections.post | sortByDate | first).url }}">Découvrir</a>
         </div>
-        <article class="card">
-            <span class="tag">Formation géologique</span>
-            <div class="card__content">
-                <h1>La formation géologique de l'île est à l'origine de la constitution d'écosystèmes terrestres et marins variés.</h1>
-                <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
-            </div>
-            <div class="card__footer">
-                <a href="/chronology" class="btn btn-icon" aria-label="Découvrir">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                    </svg>
-                </a>
-                <span class="num">01</span>
-            </div>
-        </article>
+        <ol class="cards">
+            <li class="card" aria-current="true">
+                <span class="tag">Formation géologique</span>
+                <div class="card__content">
+                    <h1>La formation géologique de l'île est à l'origine de la constitution d'écosystèmes terrestres et marins variés.</h1>
+                    <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ (collections.formation | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                    </a>
+                    <span class="card__step">01</span>
+                </div>
+            </li>
+            <li class="card">
+                <span class="tag">Peuplement</span>
+                <div class="card__content">
+                    <h1>La formation géologique de l'île est à l'origine de la constitution d'écosystèmes terrestres et marins variés.</h1>
+                    <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ (collections.peuplement | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                    </a>
+                    <span class="card__step">02</span>
+                </div>
+            </li>
+            <li class="card">
+                <span class="tag">Colonisation</span>
+                <div class="card__content">
+                    <h1>La formation géologique de l'île est à l'origine de la constitution d'écosystèmes terrestres et marins variés.</h1>
+                    <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ (collections.colonisation | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                    </a>
+                    <span class="card__step">03</span>
+                </div>
+            </li>
+            <li class="card">
+                <span class="tag">Contemporain</span>
+                <div class="card__content">
+                    <h1>La formation géologique de l'île est à l'origine de la constitution d'écosystèmes terrestres et marins variés.</h1>
+                    <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ (collections.contemporain | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                    </a>
+                    <span class="card__step">04</span>
+                </div>
+            </li>
+        </ol>
     </div>
 </section>
 
