@@ -19,7 +19,7 @@ title: Découvrir l'Histoire de la Martinique
                     <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
                 </div>
                 <div class="card__footer">
-                    <a href="{{ (collections.formation | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                    <a href="{{ (collections.post | withCategory('formation-geologique') | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
                         </svg>
@@ -34,7 +34,7 @@ title: Découvrir l'Histoire de la Martinique
                     <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
                 </div>
                 <div class="card__footer">
-                    <a href="{{ (collections.peuplement | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                    <a href="{{ (collections.post | withCategory('peuplement') | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
                         </svg>
@@ -49,7 +49,7 @@ title: Découvrir l'Histoire de la Martinique
                     <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
                 </div>
                 <div class="card__footer">
-                    <a href="{{ (collections.colonisation | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                    <a href="{{ (collections.post | withCategory('colonisation') | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
                         </svg>
@@ -64,7 +64,7 @@ title: Découvrir l'Histoire de la Martinique
                     <p>Formation entre la fin de l'Oligocène et du Miocène supérieur (entre 23 et 10 millions d'années)</p>
                 </div>
                 <div class="card__footer">
-                    <a href="{{ (collections.contemporain | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
+                    <a href="{{ (collections.post | withCategory('contemporain') | sortByDate | first).url }}" class="btn btn-icon" aria-label="Découvrir">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
                         </svg>

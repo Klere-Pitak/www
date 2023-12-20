@@ -4,10 +4,12 @@ const postcssImport = require('postcss-import');
 const postcssNested = require('postcss-nested')
 const postcssPresetEnv = require('postcss-preset-env');
 const cssnano = require('cssnano');
+const slugify = require("slugify");
 
 module.exports = function(eleventyConfig) {
 
     eleventyConfig.addTemplateFormats('css');
+    eleventyConfig.addTemplateFormats('yml');
 
     eleventyConfig.addExtension('css', {
         outputFileExtension: 'css',
@@ -36,6 +38,16 @@ module.exports = function(eleventyConfig) {
     // md data import
     eleventyConfig.addCollection("posts", function(collectionApi) {
         return collectionApi.getFilteredByGlob("_posts/*.md");
+    });
+
+    eleventyConfig.addFilter('withCategory', function(collection, category) {
+        if (!category) return collection;
+        return collection.filter(item => slugify(item.data.category, {
+            lower: true,
+            trim: true,
+            replacement: "-",
+            remove: /[*+~.·,()'"`´%!?¿:@]/g
+        }) == category)
     });
 
     function sortByDate(a, b) {
