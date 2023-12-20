@@ -8,8 +8,10 @@ const slugify = require("slugify");
 
 module.exports = function(eleventyConfig) {
 
+    eleventyConfig.addPassthroughCopy('src/assets');
+    eleventyConfig.addPassthroughCopy('src/scripts');
+
     eleventyConfig.addTemplateFormats('css');
-    eleventyConfig.addTemplateFormats('yml');
 
     eleventyConfig.addExtension('css', {
         outputFileExtension: 'css',
@@ -31,9 +33,6 @@ module.exports = function(eleventyConfig) {
             }
         }
     })
-
-    eleventyConfig.addPassthroughCopy('assets');
-    eleventyConfig.addPassthroughCopy('src/scripts');
 
     // md data import
     eleventyConfig.addCollection("posts", function(collectionApi) {
