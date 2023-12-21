@@ -25,7 +25,7 @@
         transition: opacity var(--card-transition-duration) ease-in-out;
     }
 
-    &[aria-current="true"] {
+    &[aria-current='true'] {
         opacity: 1;
         position: relative;
         top: 0;
@@ -105,7 +105,7 @@
             width: 5rem;
             height: 5rem;
             padding: 1rem;
-            
+
             box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
 
             &:is(:hover, :focus) {
@@ -215,13 +215,13 @@
 }
 
 @keyframes pulse {
-	0% {
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
-	}
-	70% {
-		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-	}
-	100% {
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-	}
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
 }

@@ -43,7 +43,7 @@ const timeline = document.querySelector('.timeline');
 // https://barba.js.org/docs/advanced/utils/
 function goto(e) {
     e.preventDefault();
-    
+
     const target = e.currentTarget;
     const href = barba.url.parse(target.href).path;
     barba.go(href, target, e);
@@ -55,34 +55,34 @@ function goto(e) {
 function updateView({ trigger }) {
     const href = barba.url.parse(trigger.href).path;
     const currentLink = timeline.querySelector(`a[href="${href}"]`);
-    const category = href.match(/[^/]+/gi)[0]
+    const category = href.match(/[^/]+/gi)[0];
 
     timeline.querySelectorAll('ol').forEach((ol) => {
         if (ol.classList.contains(category)) {
-            ol.classList.add('active')
+            ol.classList.add('active');
         } else {
-            ol.classList.remove('active')
+            ol.classList.remove('active');
         }
-    })
+    });
 
     document.querySelectorAll('.periods a').forEach((a) => {
         if (a.classList.contains(category)) {
-            a.setAttribute('aria-current', 'page')
+            a.setAttribute('aria-current', 'page');
         } else {
-            a.removeAttribute('aria-current')
+            a.removeAttribute('aria-current');
         }
-    })
-    
+    });
+
     timeline.querySelectorAll('a').forEach((el) => {
         // update aria-current attribute
         if (el === currentLink) {
             el.setAttribute('aria-current', 'page');
         } else {
-            el.removeAttribute('aria-current')
+            el.removeAttribute('aria-current');
         }
 
         // update data attribute `direction` used by Barba transitions
-        const position = currentLink && currentLink.compareDocumentPosition(el)
+        const position = currentLink && currentLink.compareDocumentPosition(el);
         if (position & Node.DOCUMENT_POSITION_FOLLOWING) {
             el.setAttribute('data-direction', 'next');
         } else if (position & Node.DOCUMENT_POSITION_PRECEDING) {
@@ -97,11 +97,9 @@ function updateView({ trigger }) {
     });
 }
 
-
-
 // scroll to details when opening
 function attachDetailsEventListener({ next }) {
-    const toggleBtn = next.container.querySelector('#toggle_details')
+    const toggleBtn = next.container.querySelector('#toggle_details');
     if (!toggleBtn) {
         return;
     }
@@ -114,7 +112,7 @@ function attachDetailsEventListener({ next }) {
             const isOpen = details.classList.contains('open');
 
             if (isOpen) {
-                hideDetails(details)
+                hideDetails(details);
             } else {
                 details.classList.add('open');
                 setTimeout(() => {
@@ -123,7 +121,7 @@ function attachDetailsEventListener({ next }) {
             }
 
             event.currentTarget.setAttribute('aria-expanded', !isOpen);
-            
+
             return false;
         },
         false,
@@ -134,7 +132,7 @@ function hideDetails(details) {
     window.scrollTo({ top: 50, behavior: 'smooth' });
     setTimeout(() => {
         (details || document.querySelector('#details')).classList.remove('open');
-    }, 200)
+    }, 200);
 }
 
 barba.init({
@@ -171,12 +169,12 @@ barba.hooks.after(function () {
 });
 
 barba.hooks.beforeEnter((data) => {
-    updateView(data)
-    attachDetailsEventListener(data)
-})
+    updateView(data);
+    attachDetailsEventListener(data);
+});
 
 // initialize
-document.addEventListener('DOMContentLoaded', function() {
-    updateView({ trigger: timeline.querySelector('a[aria-current="page"]') })
-    attachDetailsEventListener({ next: { container: document.body } })
-})
+document.addEventListener('DOMContentLoaded', function () {
+    updateView({ trigger: timeline.querySelector('a[aria-current="page"]') });
+    attachDetailsEventListener({ next: { container: document.body } });
+});

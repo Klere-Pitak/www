@@ -8,12 +8,16 @@
     "url": "git+https://github.com/Klere-Pitak/www.git"
   },
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "dev": "npx @11ty/eleventy --serve",
+    "build": "cross-env NODE_ENV=production npx @11ty/eleventy && cross-env NODE_ENV=production postcss src/styles/index.css --o public/styles/style.css",
+    "build:eleventy": "cross-env NODE_ENV=production npx @11ty/eleventy",
+    "build:css": "cross-env NODE_ENV=production postcss src/styles/index.css --o public/styles/style.css",
+    "dev": "npm-run-all --parallel css eleventy",
+    "eleventy": "npx @11ty/eleventy --serve",
+    "css": "postcss src/styles/index.css --o public/styles/styles.css --watch",
     "format": "prettier --write -c src",
     "lint": "npm run lint:js && npm run lint:a11y",
     "lint:js": "eslint --ext .js ./src/scripts/",
-    "lint:a11y": "pa11y-ci -c .pa11yci.json './public/**/*.html'",
+    "lint:a11y": "pa11y-ci -c .pa11yci.json './public/!(admin)/**/*.html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -22,16 +26,17 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "autoprefixer": "^10.4.16",
+    "cross-env": "^7.0.3",
     "cssnano": "^6.0.1",
     "eslint": "^8.55.0",
     "eslint-plugin-compat": "^4.2.0",
+    "npm-run-all": "^4.1.5",
     "pa11y-ci": "^3.1.0",
     "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
     "postcss-import": "^15.1.0",
     "postcss-nested": "^6.0.1",
-    "postcss-preset-env": "^9.3.0"
-  },
-  "dependencies": {
+    "postcss-preset-env": "^9.3.0",
     "prettier": "^3.1.1"
   }
 }
