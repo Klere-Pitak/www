@@ -1,0 +1,63 @@
+backend:
+    name: github
+    repo: Klere-Pitak/www
+    branch: main # Branch to update (optional; defaults to master)
+
+locale: 'fr'
+
+media_folder: 'src/assets/uploads' # Media files will be stored in the repo under src/assets/uploads
+public_folder: '/assets/uploads' # The src attribute for uploaded media will begin with /assets/uploads
+
+collections:
+    - name: 'history'
+      label: 'Histoire'
+      folder: 'src/_posts'
+      path: '{{slug}}/{{numericPeriod}}'
+      slug: '{{category}}'
+      create: true
+      sortable_fields: ['numericPeriod', 'title', 'category']
+      fields:
+          - label: 'Categorie'
+            name: 'category'
+            widget: 'select'
+            options: ['Formation géologique', 'Peuplement', 'Colonisation', 'Contemporain']
+          - label: 'Titre'
+            name: 'title'
+            widget: 'string'
+          - label: 'Periode'
+            name: 'period'
+            widget: 'string'
+          - label: 'Periode raccourcie'
+            name: 'shrunkPeriod'
+            widget: 'string'
+          - label: 'Periode numérique'
+            description: 'Utilisée pour le tri'
+            name: 'numericPeriod'
+            hint: 'Exemple: `1492` ou `-12e6`)'
+            widget: 'string'
+            pattern: ['^-?[0-9]+(e[0-9]+)?$', 'Doit être un nombre valide.']
+          - label: "Image d'illustration'"
+            name: 'titlePicture'
+            widget: 'image'
+            required: false
+          - label: 'Détails'
+            name: 'details'
+            widget: 'list'
+            fields:
+                - label: Texte
+                  name: text
+                  widget: markdown
+                - label: Image
+                  name: img
+                  widget: image
+                  required: false
+          - label: 'Layout'
+            name: 'layout'
+            widget: 'string'
+            default: 'chronology'
+            hint: 'Ne pas modifier !'
+          - label: 'Tags'
+            name: 'tags'
+            widget: 'string'
+            default: 'post'
+            hint: 'Ne pas modifier !'
