@@ -11,7 +11,7 @@ permalink: "{{ category | slugify }}/{{ title | slugify }}/index.html"
         {% for cat, items in collections.post | sortByDate | groupby('data.category') %}
         <ol class="{{ cat | slugify }}{% if category == cat %} active{% endif %}">
         {% for post in items  -%}
-            <li><a href={{ post.url }}{% if post.url == page.url %} aria-current="page"{% endif %}><span>{{ post.data.shrunkPeriod }}</span></a></li>
+            <li><a href="{{ post.url }}"{% if post.url == page.url %} aria-current="page"{% endif %}><span>{{ post.data.shrunkPeriod }}</span></a></li>
         {% endfor -%}
         </ol>
         {% endfor %}

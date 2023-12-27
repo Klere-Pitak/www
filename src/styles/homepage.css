@@ -87,7 +87,7 @@
 .about {
     background-color: var(--color-darkgray);
     color: white;
-    padding-block: 4rem;
+    padding-block: 8rem;
 
     .container {
         display: flex;
@@ -97,6 +97,7 @@
     .presentation {
         width: 60%;
         font-size: 5.6875rem;
+        line-height: normal; 
         font-weight: 800;
     }
 
